@@ -1,0 +1,92 @@
+@import '../styles.scss';
+
+$padd50: 50px;
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    @include dflex(column, space-between);
+    width: 400px;
+    border-right: 1px solid rgba(128, 128, 128, 0.26);
+    height: 100vh;
+    box-sizing: border-box;
+    text-align: left;
+    padding: 30px 0;
+
+    .sidebar-top {
+        @include dflex(column, space-between);
+        gap: 30px;
+        
+        h1 {
+            font-weight: 500;
+            padding: 0 $padd50;
+            span {
+                color: var(--red);
+            }
+        }
+    }
+
+   
+}
+
+.feed {
+
+    ul {
+        margin-top: 15px;
+        list-style: none;
+
+        li {
+            margin-bottom: 25px;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        display: block;
+        color: gray;
+        font-weight: 500;
+        font-size: 19px;
+        margin-left: 50px;
+
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    span {
+        padding: 0 50px;
+    }
+}
+
+.active {
+    color: white !important;
+    margin-left: 0 !important;
+
+    &::before {
+        content: "";
+        display: inline-block;
+        width: 5px;
+        height: 30px;
+        margin-right: 45px;
+        background: red;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+   i {
+    color: var(--red);
+   }
+}
+
+
+.content {
+    width: 75%;
+}
+
+.logout  {
+    span {
+        padding:  $padd50;
+    }
+}

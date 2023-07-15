@@ -1,0 +1,47 @@
+
+@mixin dflex($gap, $jusContent) {
+    display: flex;
+    align-items: center;
+    gap: $gap;
+    justify-content: $jusContent;
+}
+
+.header {
+    padding: 30px;
+    width: 100%;
+    @include dflex(0, space-between);
+
+    .left-side {
+        @include dflex(45px, none);
+
+        .arrows {
+            @include dflex(25px, none);
+            cursor: pointer;
+
+            .arrowRight{
+                color: gray;
+            }
+         }
+
+        input {
+            border: 1px solid rgba(128, 128, 128, 0.432);
+            padding: 13px;
+            border-radius: 25px;
+            background: inherit;
+            color: white;
+            outline: none;
+        }
+    }
+
+    .right-side {
+        i {
+            font-size: 25px;
+            cursor: pointer;
+            &:not(:last-child) {
+                margin-right: 22px;
+            }
+        }
+    }
+
+    
+}

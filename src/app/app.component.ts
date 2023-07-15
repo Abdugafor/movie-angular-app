@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpService } from './http.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'movie-app';
+  
+  constructor (private httpService: HttpService) {}
+
+  fetchData() {
+    this.httpService.getMovies()
+      .subscribe({
+        next: res => console.log(res),
+        error: err => console.log(err)
+      })
+  }
 }

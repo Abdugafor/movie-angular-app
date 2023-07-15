@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin dflex($fdirection, $fjustContent) {
+    display: flex;
+    flex-direction: $fdirection;
+    justify-content:  $fjustContent;
+}
+
+:root {
+    --red: #AC2419;
+    --black-bg: #0F0F0F;
+    --black-light: #161616;
+    --gray: #F3F3F3;
+}
+
+body {
+    background: #0F0F0F;
+    color: white;
+    font-family: 'Hind Siliguri', sans-serif; 
+    font-size: 14px;
+}
