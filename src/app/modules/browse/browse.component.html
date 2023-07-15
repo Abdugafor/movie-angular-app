@@ -1,19 +1,31 @@
 <div class="container">
-    <div class="card" *ngFor="let movie of movies">
-        <img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="">
+    <div class="big-img-block">
+        <!-- <img src="http://image.tmdb.org/t/p/w500/{{movies[4].poster_path}}" alt="" class="bg-img"> -->
 
-        <h1>{{movie.title}}</h1>
+        <div class="bg-filter"></div>
 
+        <div class="info">
+            <div class="main-info">
+                <!-- <h1>{{movies[4].title}}</h1> -->
+                
+                <div class="rating">
+                   <span><img src="../assets/imdb.svg" alt=""> 8.1</span>
+                   <span>English</span>
+                </div>
+            </div>
+            
+
+            <div class="bottom-info">
+                <button>Watch</button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="movies">
+       <app-popular></app-popular>
     </div>
 
 </div>
-<!-- 
-<div class="container">
-    <div class="card" >
-        <img src="../assets/spid.jpg" alt="">
 
-        <h1>Spider man</h1>
-
-    </div>
-
-</div> -->

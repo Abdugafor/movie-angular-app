@@ -1,0 +1,29 @@
+<div class="popular">
+    <h1>Popular</h1>
+
+    <div class="grid">
+        <div class="card" *ngFor="let movie of movies">
+            <img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="">
+
+            <div class="bg-filter"></div>
+    
+            <h1>{{movie.title}}</h1>
+    
+        </div>
+
+        <!-- Test -->
+
+        <!-- <div class="card grid-item" >
+            <img src="../assets/spid.jpg" alt="">
+    
+            <div class="bg-filter"></div>
+            <h1>Spider man</h1>
+    
+        </div> -->
+
+    
+
+        <!--  Test end -->
+    </div>
+   
+</div>
