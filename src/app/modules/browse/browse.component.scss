@@ -2,3 +2,33 @@ p {
     color: white;
     font-size: 50px;
 }
+
+.card {
+    position: relative;
+    height: 18em;
+    width: 15em;
+    background: rgba(192, 85, 85, 0.76);
+    color: #fff;
+    margin-bottom: 15px;
+    
+    h1 {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: 22px;
+    }
+
+    img {
+        position: absolute;
+        width: 15em;
+        height: 18em;
+        // filter: blur(2px)
+    }
+
+}
+
+.container {
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}

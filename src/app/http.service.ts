@@ -8,10 +8,10 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getMovies() {
-    return this.http.get('http://www.omdbapi.com/?t=Avatar&y=2022&apikey=186934d2&s', {
+    return this.http.get('https://api.themoviedb.org/3/movie/popular', {
       headers: {
-        'X-RapidAPI-Key': 'e15ff0ada6mshb6590593374ec5ep1c0b2djsn056a8fcbd532',
-		    'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+        accept: 'application/json',
+        Authorization:  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYTI1ZjdkOGY4ZjY4M2NkM2NiMDBiM2M2Zjc0ZDU2NCIsInN1YiI6IjY0YjJhN2UwMjNkMjc4MDBlODhhZjkyMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ADiuIWDIbBYM-qGh4HspfuQUhFGbPIwo04KqYiASqKo'
       }
     })
   }

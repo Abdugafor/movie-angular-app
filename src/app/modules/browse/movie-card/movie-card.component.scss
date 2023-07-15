@@ -1,0 +1,14 @@
+.card {
+    position: relative;
+    height: 18em;
+    width: 15em;
+    background: white;
+    color: #161616;
+    
+    h1 {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: 16px;
+    }
+}

@@ -1,1 +1,19 @@
-<p>browse works!</p>
+<div class="container">
+    <div class="card" *ngFor="let movie of movies">
+        <img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="">
+
+        <h1>{{movie.title}}</h1>
+
+    </div>
+
+</div>
+<!-- 
+<div class="container">
+    <div class="card" >
+        <img src="../assets/spid.jpg" alt="">
+
+        <h1>Spider man</h1>
+
+    </div>
+
+</div> -->

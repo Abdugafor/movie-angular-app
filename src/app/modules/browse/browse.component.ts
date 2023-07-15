@@ -13,12 +13,15 @@ export class BrowseComponent implements OnInit {
   constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
-    this.httpService.getMovies()
-    .subscribe({
-      next: res => this.movies = res,
-      error: error => console.log(error),
-      complete: () => console.log(this.movies.results)
-    })
+    // this.httpService.getMovies()
+    // .subscribe({
+    //   next: res => this.movies = res,
+    //   error: error => console.log(error),
+    //   complete: () => {
+    //     this.movies = this.movies.results
+    //     console.log(this.movies)
+    //   }
+    // })
   }
 
 }
