@@ -1,3 +1,7 @@
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+
+// Optional Theme Stylesheet
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
 
 .card {
     position: relative;
@@ -55,9 +59,9 @@
     }
 
     .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-        justify-items: flex-start ;                
+       display: flex;
+       flex-wrap: wrap;
+       gap: 15px 40px;     
     }
 
 }
