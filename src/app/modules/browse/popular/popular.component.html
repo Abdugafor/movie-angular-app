@@ -2,14 +2,38 @@
     <h1>Popular</h1>
 
     <div class="grid">
-        <div class="card" *ngFor="let movie of movies">
+        <!-- <div class="card" *ngFor="let movie of movies">
             <img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="">
 
             <div class="bg-filter"></div>
     
             <h1>{{movie.title}}</h1>
     
-        </div>
+        </div> -->
+
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+              <ul class="glide__slides">
+                <li class="glide__slide"  *ngFor="let movie of movies">
+                    <div class="card">
+                        <img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="">
+            
+                        <div class="bg-filter"></div>
+                
+                        <h1>{{movie.title}}</h1>
+                
+                    </div>
+                </li>
+               
+              </ul>
+            </div>
+
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+            </div>
+          </div>
+        
 
         <!-- Test -->
 
