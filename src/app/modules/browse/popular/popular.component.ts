@@ -12,7 +12,7 @@ import Glide, { Controls, Breakpoints } from '@glidejs/glide/dist/glide.modular.
 
 export class PopularComponent implements OnInit, AfterViewChecked {
   movies: any = []
-
+  slider
   constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class PopularComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked(): void {
-   new Glide('.glide', {
+   this.slider = new Glide('.glide', {
       type: 'carousel',
       startAt: 0,
       perView: 4,
@@ -36,7 +36,10 @@ export class PopularComponent implements OnInit, AfterViewChecked {
         before: 100,
         after: 100
       } 
-    }).mount({ Controls, Breakpoints })
+    })
+
+    this.slider.update()
+    this.slider.mount({Controls ,Breakpoints})
   }
 
 } 
