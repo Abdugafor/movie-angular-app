@@ -15,11 +15,13 @@ export class PopularComponent{
 
   @Input() movies: any = []
   moreMovies: any = []
-
+  isShowSpinner = false
 
   constructor(private httpService: HttpService, private router: Router) {}
   
   onLoadMore() {
+    this.isShowSpinner = true
+
    this.httpService.getData('https://api.themoviedb.org/3/movie/top_rated')
     .subscribe({
          next: (res: any) => this.moreMovies = res.results,
@@ -27,6 +29,7 @@ export class PopularComponent{
          complete: () => {
            this.moreMovies.forEach(movie => {
             this.movies.push(movie)
+            this.isShowSpinner = false
            });
          }
     })
