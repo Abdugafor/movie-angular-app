@@ -2,10 +2,13 @@
     
 
     <div class="popular">
-        <h1>Popular</h1>
+        <div class="top">
+            <h1>Popular</h1>
+             <app-decoration></app-decoration>
+        </div>
             
         <div class="grid">
-            <div class="card" *ngFor="let movie of movies">
+            <div class="card" *ngFor="let movie of movies" (click)="onNavigate(movie.id)">
                 <img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="">
     
                 <div class="bg-filter"></div>
@@ -16,9 +19,8 @@
         </div>
 
         <div class="btnBlock">
-            <button class="btnLoad" (click)="onLoadMore()" [ngSwitch]="showSpinner">
-                <app-spinner *ngSwitchCase="true"></app-spinner>
-               <span *ngSwitchCase="false">Load More</span>
+            <button class="btnLoad" (click)="onLoadMore()" >
+               Load More
             </button>
         </div>
     </div>

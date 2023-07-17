@@ -1,4 +1,6 @@
 import { Component, Input} from '@angular/core';
+import {  Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { HttpService } from 'src/app/http.service';
 
 
@@ -9,27 +11,30 @@ import { HttpService } from 'src/app/http.service';
   styleUrls: ['./popular.component.scss']
 })
 
-export class PopularComponent {
+export class PopularComponent{
+
   @Input() movies: any = []
   moreMovies: any = []
-  showSpinner = false
 
-  constructor(private httpService: HttpService) {}
 
+  constructor(private httpService: HttpService, private router: Router) {}
   
   onLoadMore() {
-    this.showSpinner = true
-    this.httpService.getData('https://api.themoviedb.org/3/movie/top_rated')
+   this.httpService.getData('https://api.themoviedb.org/3/movie/top_rated')
     .subscribe({
          next: (res: any) => this.moreMovies = res.results,
          error: error => console.log('error'),
          complete: () => {
            this.moreMovies.forEach(movie => {
             this.movies.push(movie)
-            this.showSpinner = false
            });
          }
-       })
+    })
+  }
+
+
+  onNavigate(movieId: number) {
+    this.router.navigate(['browse', movieId])
   }
 
 } 

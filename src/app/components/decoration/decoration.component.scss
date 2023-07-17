@@ -1,0 +1,16 @@
+.decor {
+    position: relative;
+    width: 200px;
+    height: 1px;
+    background: rgba(28, 28, 28, 0.709);
+
+    .red-block {
+        position: absolute;
+        width: 38px;
+        height: 16px;
+        top: -7px;
+        border-radius: 30px;
+        background: red;
+        left: 25px;
+    }
+}

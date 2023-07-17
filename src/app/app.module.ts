@@ -14,6 +14,8 @@ import { PopularComponent } from './modules/browse/popular/popular.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { PartiesComponent } from './modules/browse/parties/parties.component';
 import { BigMovieComponent } from './modules/browse/big-movie/big-movie.component';
+import { DecorationComponent } from './components/decoration/decoration.component';
+import { MovieInfoComponent } from './modules/browse/movie-info/movie-info.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { BigMovieComponent } from './modules/browse/big-movie/big-movie.componen
     PopularComponent,
     SpinnerComponent,
     PartiesComponent,
-    BigMovieComponent
+    BigMovieComponent,
+    DecorationComponent,
+    MovieInfoComponent
   ],
   imports: [
     BrowserModule,
