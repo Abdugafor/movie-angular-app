@@ -1,57 +1,26 @@
-<div class="popular">
-    <h1>Popular</h1>
+<div class="container" >
     
-    <div class="parties">
-        <div class="party-card" *ngFor="let partie of parties">
-            <div class="top-block">
-                <img src="http://image.tmdb.org/t/p/w500/{{partie.poster_path}}" alt="">
 
-                <div class="friends"></div>
+    <div class="popular">
+        <h1>Popular</h1>
+            
+        <div class="grid">
+            <div class="card" *ngFor="let movie of movies">
+                <img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="">
+    
+                <div class="bg-filter"></div>
+        
+                <h1>{{movie.title}}</h1>
+        
             </div>
-
-            <h4>{{partie.title | slice:0:27}}{{partie.title.length > 26 ? '...' : ''}}</h4>
-            <span class="tags">Science Fiction,</span>
-            <span class="tags">Fantasy,</span>
         </div>
 
-        <!-- <div class="party-card" >
-            <div class="top-block">
-                <img src="../assets/marvel.jpg" alt="">
-
-                <div class="friends"></div>
-            </div>
-
-            <h4>{{test | slice:0:36}} </h4>
-            <span class="tags">Science Fiction,</span>
-            <span class="tags">Fantasy,</span>
-        </div> -->
+        <div class="btnBlock">
+            <button class="btnLoad" (click)="onLoadMore()" [ngSwitch]="showSpinner">
+                <app-spinner *ngSwitchCase="true"></app-spinner>
+               <span *ngSwitchCase="false">Load More</span>
+            </button>
+        </div>
     </div>
-
-
-    <div class="grid">
-        <!-- <div class="card" *ngFor="let movie of movies">
-            <img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="">
-
-            <div class="bg-filter"></div>
-    
-            <h1>{{movie.title}}</h1>
-    
-        </div> -->
-
-    
-        <!-- Test -->
-
-        <!-- <div class="card grid-item" >
-            <img src="../assets/spid.jpg" alt="">
-    
-            <div class="bg-filter"></div>
-            <h1>Spider man</h1>
-    
-        </div> -->
-
-    
-
-        <!--  Test end -->
-    </div>
-   
 </div>
+

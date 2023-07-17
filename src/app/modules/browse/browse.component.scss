@@ -15,84 +15,10 @@ p {
     font-size: 50px;
 }
 
-
-
 .container {
     display: flex;
     flex-direction: column;
     gap: 30px;
     position: relative;
-    padding: 10px 30px;
-
-    .big-img-block {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        height: 30em;
-        border-radius: $border20;
-        padding: 20px 40px;
-        box-sizing: border-box;
-        
-
-        .bg-img {
-            @extend %posAbsol;
-            background: rgb(0,0,0);
-        }
-
-        .bg-filter {
-            @extend %posAbsol;
-            height: 100%;
-            background: rgb(0,0,0);
-            background: linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 17%, rgba(0,0,0,1) 38%, rgba(0,0,0,0.6824070692730217) 100%);
-        }
-
-        .info {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            justify-content: space-between;
-            
-
-            h1 {
-                font-size: 50px;
-                font-weight: 200;
-                max-width: 326px;
-                span {
-                    font-weight: 600;
-                }
-            }
-
-        }
-
-        button {
-            border: none;
-            padding: 20px 30px;
-            cursor: pointer;
-            border-radius: 17px;
-            background: #AC2419;
-            color: white;
-        }
-
-        .rating {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-
-            img {
-                width: 30px;
-            }
-
-            span:not(:last-child) {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                margin-right: 15px;
-            }
-        }
-    }
-
-
-    
-    
+    padding: 10px 30px; 
 }

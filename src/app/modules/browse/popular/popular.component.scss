@@ -1,8 +1,11 @@
+h1 {
+    margin: 15px 0;
+}
 
 .card {
     position: relative;
     height: 18em;
-    width: 15em;
+    width: 255px;
     background: rgba(192, 85, 85, 0.76);
     color: #fff;
     margin-bottom: 15px;
@@ -47,64 +50,31 @@
     }
 }
 
-.parties {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    .party-card {
-        background: #161616;
-        width: 255px;
-        height: 124px;
-        padding: 20px;
-        border-radius: 15px;
-    
-        h4 {
-            font-size: 17px;
-            font-weight: 500;
-        }
-    
-        span {
-            color: gray;
-            font-weight: 500;
-        }
-    
-        .top-block {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-    
-            img {
-                width: 70px;
-                height: 50px;
-                border-radius: 10px;
-                object-fit: cover;
-            }
-    
-            .friends {
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                background: white;
-            }
-        }
-    
-        
-    }
-}
 
 
 .popular {
 
-    h1 {
-        margin-bottom: 15px;
-    }
-
     .grid {
        display: flex;
        flex-wrap: wrap;
-       gap: 15px 40px;     
+       gap: 15px 30px;     
     }
 
 }
+
+.btnBlock {
+    display: flex;
+    justify-content: center;
+}
     
+.btnLoad {
+    border: none;
+    background: #AC2419;
+    padding: 15px 20px;
+    border-radius: 20px;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    
+}
+

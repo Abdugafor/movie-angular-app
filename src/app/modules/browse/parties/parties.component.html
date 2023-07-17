@@ -1,0 +1,17 @@
+<div class="parties-container">
+    <h1>Parties</h1>
+
+    <div class="parties">
+        <div class="party-card" *ngFor="let partie of parties">
+            <div class="top-block">
+                <img src="http://image.tmdb.org/t/p/w500/{{partie.poster_path}}" alt="">
+
+                <div class="friends"></div>
+            </div>
+
+            <h4>{{partie.title | slice:0:27}}{{partie.title.length > 26 ? '...' : ''}}</h4>
+            <span class="tags">Science Fiction,</span>
+            <span class="tags">Fantasy,</span>
+        </div>
+    </div>
+</div>

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
   constructor(private http: HttpClient) { }
 
-  private getData(url: string) {
+  public getData(url: string) {
     return this.http.get(url, {
       headers: {
         accept: 'application/json',
@@ -19,5 +19,6 @@ export class HttpService {
   public getMovies() {
     return this.getData('https://api.themoviedb.org/3/movie/popular')
   }
+
  
 }

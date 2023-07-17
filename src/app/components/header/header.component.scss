@@ -22,14 +22,35 @@
             }
          }
 
-        input {
-            border: 1px solid rgba(128, 128, 128, 0.432);
-            padding: 13px;
-            border-radius: 25px;
-            background: inherit;
-            color: white;
-            outline: none;
+
+        .search {
+            position: relative;
+            width: fit-content;
+            height: fit-content;
+
+            input {
+                border: 1px solid #cdcdcd4a;
+                padding: 10px 15px 10px 40px;
+                width: 244px;
+                border-radius: 25px;
+                background: inherit;
+                color: white;
+                outline: none;
+                font-family: inherit;
+            }
+
+            i {
+                position: absolute;
+                left: 20px;
+                top: 15px;
+                color: #cdcdcd4a;
+            }
+
         }
+        
+       
+
+        
     }
 
     .right-side {

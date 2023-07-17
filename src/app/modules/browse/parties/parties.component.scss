@@ -1,0 +1,56 @@
+.parties {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    
+    .party-card {
+        background: #161616;
+        width: 255px;
+        height: 124px;
+        padding: 20px;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: box-shadow 0.3s;
+
+        h4 {
+            font-size: 17px;
+            font-weight: 500;
+        }
+    
+        span {
+            color: gray;
+            font-weight: 500;
+        }
+
+        &:hover {
+            box-shadow: 4px 4px 14px 4px rgba(0, 0, 0, 0.25);
+        }
+    
+        .top-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+    
+            img {
+                width: 70px;
+                height: 50px;
+                border-radius: 10px;
+                object-fit: cover;
+            }
+    
+            .friends {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: white;
+            }
+        }
+    
+        
+    }
+}
+
+h1 {
+    margin-bottom: 15px;
+}

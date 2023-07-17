@@ -11,6 +11,9 @@ import { WatchlistComponent } from './modules/watchlist/watchlist.component';
 import { ComingsoonComponent } from './modules/comingsoon/comingsoon.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PopularComponent } from './modules/browse/popular/popular.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { PartiesComponent } from './modules/browse/parties/parties.component';
+import { BigMovieComponent } from './modules/browse/big-movie/big-movie.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { PopularComponent } from './modules/browse/popular/popular.component';
     WatchlistComponent,
     ComingsoonComponent,
     HeaderComponent,
-    PopularComponent
+    PopularComponent,
+    SpinnerComponent,
+    PartiesComponent,
+    BigMovieComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component,  OnInit} from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { HttpService } from 'src/app/http.service';
 
 
@@ -9,24 +9,27 @@ import { HttpService } from 'src/app/http.service';
   styleUrls: ['./popular.component.scss']
 })
 
-export class PopularComponent implements OnInit {
-  movies: any = []
-  parties: any = []
-  test = "Transformers: Rise of the Beast 3 ff"
-  
+export class PopularComponent {
+  @Input() movies: any = []
+  moreMovies: any = []
+  showSpinner = false
+
   constructor(private httpService: HttpService) {}
 
-  ngOnInit(): void {
-    this.httpService.getMovies()
+  
+  onLoadMore() {
+    this.showSpinner = true
+    this.httpService.getData('https://api.themoviedb.org/3/movie/top_rated')
     .subscribe({
-      next: (res: any) => this.movies = res.results,
-      error: error => console.log('error'),
-      complete: () => {
-        this.parties = this.movies.splice(0, 4)
-        console.log(this.parties)
-      }
-    })
-    
+         next: (res: any) => this.moreMovies = res.results,
+         error: error => console.log('error'),
+         complete: () => {
+           this.moreMovies.forEach(movie => {
+            this.movies.push(movie)
+            this.showSpinner = false
+           });
+         }
+       })
   }
 
 } 
