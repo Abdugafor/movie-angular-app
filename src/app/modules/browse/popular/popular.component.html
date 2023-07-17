@@ -1,5 +1,32 @@
 <div class="popular">
     <h1>Popular</h1>
+    
+    <div class="parties">
+        <div class="party-card" *ngFor="let partie of parties">
+            <div class="top-block">
+                <img src="http://image.tmdb.org/t/p/w500/{{partie.poster_path}}" alt="">
+
+                <div class="friends"></div>
+            </div>
+
+            <h4>{{partie.title | slice:0:27}}{{partie.title.length > 26 ? '...' : ''}}</h4>
+            <span class="tags">Science Fiction,</span>
+            <span class="tags">Fantasy,</span>
+        </div>
+
+        <!-- <div class="party-card" >
+            <div class="top-block">
+                <img src="../assets/marvel.jpg" alt="">
+
+                <div class="friends"></div>
+            </div>
+
+            <h4>{{test | slice:0:36}} </h4>
+            <span class="tags">Science Fiction,</span>
+            <span class="tags">Fantasy,</span>
+        </div> -->
+    </div>
+
 
     <div class="grid">
         <!-- <div class="card" *ngFor="let movie of movies">
@@ -11,30 +38,7 @@
     
         </div> -->
 
-        <div class="glide">
-            <div class="glide__track" data-glide-el="track">
-              <ul class="glide__slides">
-                <li class="glide__slide"  *ngFor="let movie of movies">
-                    <div class="card">
-                        <img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="">
-            
-                        <div class="bg-filter"></div>
-                
-                        <h1>{{movie.title}}</h1>
-                
-                    </div>
-                </li>
-               
-              </ul>
-            </div>
-
-            <div class="glide__arrows" data-glide-el="controls">
-                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
-            </div>
-          </div>
-        
-
+    
         <!-- Test -->
 
         <!-- <div class="card grid-item" >

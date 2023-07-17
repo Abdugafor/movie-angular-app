@@ -1,6 +1,5 @@
-import { Component,  OnInit, AfterViewChecked} from '@angular/core';
+import { Component,  OnInit} from '@angular/core';
 import { HttpService } from 'src/app/http.service';
-import Glide, { Controls, Breakpoints } from '@glidejs/glide/dist/glide.modular.esm'
 
 
 
@@ -10,33 +9,24 @@ import Glide, { Controls, Breakpoints } from '@glidejs/glide/dist/glide.modular.
   styleUrls: ['./popular.component.scss']
 })
 
-export class PopularComponent implements OnInit, AfterViewChecked {
+export class PopularComponent implements OnInit {
   movies: any = []
-
+  parties: any = []
+  test = "Transformers: Rise of the Beast 3 ff"
   constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
     this.httpService.getMovies()
     .subscribe({
-      next: res => this.movies = res,
+      next: (res: any) => this.movies = res.results,
       error: error => console.log('error'),
       complete: () => {
-        this.movies = this.movies.results.splice(0, 5)
+        this.parties = this.movies.splice(0, 4)
+        console.log(this.parties)
       }
     })
     
   }
 
-  ngAfterViewChecked(): void {
-   new Glide('.glide', {
-      type: 'carousel',
-      startAt: 0,
-      perView: 4,
-      peek: {
-        before: 100,
-        after: 100
-      } 
-    }).mount({ Controls, Breakpoints })
-  }
 
 } 
