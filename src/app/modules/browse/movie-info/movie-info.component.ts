@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { HttpService } from 'src/app/http.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { HttpService } from 'src/app/http.service';
 })
 export class MovieInfoComponent implements OnDestroy, OnInit{
   id
-  movie
+  movie: any
   subscribe: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute, private httpService: HttpService) {
