@@ -13,6 +13,7 @@ export class PopularComponent implements OnInit {
   movies: any = []
   parties: any = []
   test = "Transformers: Rise of the Beast 3 ff"
+  
   constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
@@ -27,6 +28,5 @@ export class PopularComponent implements OnInit {
     })
     
   }
-
 
 } 
