@@ -1,1 +1,3 @@
-<p>comingsoon works!</p>
+<app-spinner *ngIf="isShowSpinner"></app-spinner>
+
+<app-movie-info-card *ngFor="let movie of movies" [movie]="movie"></app-movie-info-card>

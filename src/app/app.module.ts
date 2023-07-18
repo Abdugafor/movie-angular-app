@@ -16,6 +16,10 @@ import { PartiesComponent } from './modules/browse/parties/parties.component';
 import { BigMovieComponent } from './modules/browse/big-movie/big-movie.component';
 import { DecorationComponent } from './components/decoration/decoration.component';
 import { MovieInfoComponent } from './modules/browse/movie-info/movie-info.component';
+import { CountBudgetPipe } from './pipes/count-budget.pipe';
+import { CountBudgetLength } from './pipes/countBudgetLength.pipe';
+import { CardComponent } from './components/card/card.component';
+import { MovieInfoCardComponent } from './components/movie-info-card/movie-info-card.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { MovieInfoComponent } from './modules/browse/movie-info/movie-info.compo
     PartiesComponent,
     BigMovieComponent,
     DecorationComponent,
-    MovieInfoComponent
+    MovieInfoComponent,
+    CountBudgetPipe,
+    CountBudgetLength,
+    CardComponent,
+    MovieInfoCardComponent
   ],
   imports: [
     BrowserModule,

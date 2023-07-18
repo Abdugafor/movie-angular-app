@@ -9,7 +9,7 @@
 .header {
     padding: 30px;
     @include dflex(0, space-between);
-
+    
     .left-side {
         @include dflex(45px, none);
 

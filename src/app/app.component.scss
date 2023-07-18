@@ -9,10 +9,11 @@ $padd50: 50px;
 .sidebar {
     @include dflex(column, space-between);
     width: 400px;
-    border-right: 1px solid rgba(128, 128, 128, 0.26);
+    border-right: 1px solid rgb(30 30 30);
     box-sizing: border-box;
     text-align: left;
     padding: 30px 0;
+
 
     .sidebar-top {
         @include dflex(column, space-between);
@@ -85,7 +86,27 @@ $padd50: 50px;
 }
 
 .logout  {
+    cursor: pointer;
+
     span {
-        padding:  $padd50;
+        padding: 0 $padd50;
+        font-size: 17px;
+
+        i {
+            font-size: 20px;
+            margin-right: 10px;
+        }
     }
+}
+
+.info {
+    font-weight: 500;
+}
+
+hr {
+    width: 50%;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0.01em solid rgba(128, 128, 128, 0.507);
 }

@@ -1,0 +1,70 @@
+%dflex {
+    display: flex;
+}
+
+@mixin tag($color) {
+    font-size: 14px;
+    border-radius: 8px;
+    padding: 3px 6px;
+    background: $color;
+}
+
+
+
+.bottom-info {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid white;
+
+    .info-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px 0;
+
+        .infoName { 
+            font-weight: 700;
+            font-size: 20px;
+            color: rgba(122, 122, 122, 0.801);
+        }
+    
+        .info {
+            font-size: 70px;
+            color:  rgb(255 89 89 / 63%);
+            font-weight: 700;
+        }
+
+        .bottom {
+            display: block;
+            text-align: center;
+            margin-top: -23px;
+            font-weight: 500;
+        }
+
+    }
+}
+
+.companies-container {
+    text-align: center;
+    padding: 30px;
+
+    h1 {
+        margin-bottom: 50px;
+    }
+    .companies {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 50px;
+
+        .companieImg {
+            width: 280px;
+            
+        }
+    }
+}
+
+
+

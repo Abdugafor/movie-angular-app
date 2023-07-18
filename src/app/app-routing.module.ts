@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { BrowseComponent } from './modules/browse/browse.component';
 import { ComingsoonComponent } from './modules/comingsoon/comingsoon.component';
 import { WatchlistComponent } from './modules/watchlist/watchlist.component';
