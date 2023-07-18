@@ -1,6 +1,7 @@
 import { Component, Input} from '@angular/core';
 import {  Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AppService } from 'src/app/app.service';
 import { HttpService } from 'src/app/http.service';
 
 
@@ -17,7 +18,11 @@ export class PopularComponent{
   moreMovies: any = []
   isShowSpinner = false
 
-  constructor(private httpService: HttpService, private router: Router) {}
+  constructor(
+      private httpService: HttpService, 
+      private router: Router,
+      private appService: AppService
+    ) {}
   
   onLoadMore() {
     this.isShowSpinner = true
@@ -37,6 +42,9 @@ export class PopularComponent{
 
 
   onNavigate(movieId: number) {
+    const movie = this.movies.filter(item => item.id === movieId)[0]
+    
+    this.appService.addWatchedMovie(movie)
     this.router.navigate(['browse', movieId])
   }
 

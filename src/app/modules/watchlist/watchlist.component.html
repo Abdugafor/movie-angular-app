@@ -1,0 +1,54 @@
+<div class="watchlist">
+    <div class="recently-container">
+        <h1>Recenty watched Movies</h1>
+    
+        <div class="container">
+            <div class="card watchlist-card" *ngFor="let movie of watchedMovies">
+                <img src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt="">
+    
+                <div class="bg-filter"></div>
+
+                <h1>{{movie.title}}</h1>
+
+                <div class="delete icon-btn">
+                    <i class="fa-regular fa-trash-can"></i>
+                </div>
+            </div>
+    
+        </div>
+
+        <div class="card noItem" *ngIf="watchedMovies.length === 0">
+            <div class="center">
+                <i class="fa-regular fa-trash-can"></i>
+                <h4>No items yet</h4>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="favorite-container">
+        <h1>Favorites</h1>
+
+        <div class="container">
+            <div class="card watchlist-card favorite" *ngFor="let movie of favoriteMovies">
+                <img src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt="">
+    
+                <div class="bg-filter"></div>
+
+                <h1>{{movie.title}}</h1>
+
+                <div class="delete icon-btn">
+                    <i class="fa-regular fa-heart btn" ></i>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card noItem" *ngIf="favoriteMovies.length === 0">
+            <div class="center">
+                <i class="fa-regular fa-heart btn" ></i>
+                <h4>No items yet</h4>
+            </div>
+        </div>
+    </div>
+</div>

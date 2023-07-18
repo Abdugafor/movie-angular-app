@@ -1,4 +1,12 @@
 <div class="top-info">
+    <div 
+        class="icon-btn" 
+        [ngClass]="isFavorite ? 'favorite' : '' " 
+        (click)="onClickFavoriteMovie()"
+    >
+        <i class="fa-regular fa-heart btn" ></i>
+    </div>
+
     <img src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt="" class="background">
 
    <div class="top-info-container">
@@ -19,9 +27,7 @@
 
         <div class="info">
             <span class="infoName">Genres:</span>
-            <span class="genre-tag">Action</span>
-            <span class="genre-tag">Fantasy</span>
-            <span class="genre-tag">Reality</span>
+            <span class="genre-tag" *ngFor="let genre of movie.genres">{{genre.name}}</span>
         </div>
 
         <div class="bottom">
@@ -44,7 +50,7 @@
     <div class="info-container">
         <span class="infoName">Runtime:</span>
         <div class="info-block">
-            <span class="info">144</span>
+            <span class="info">{{movie.runtime}}</span>
             <span class="bottom">minutes</span>
         </div>
     </div>
@@ -52,16 +58,16 @@
     <div class="info-container">
         <span class="infoName">Budget:</span>
         <div class="info-block">
-            <span class="info">$100M</span>
+            <span class="info">${{movie.budget | countBudget}}{{movie.budget | countBudgetLength}}</span>
         </div>
     </div>
 
     <div class="info-container">
         <span class="infoName">Vote:</span>
         <div class="info-block">
-            <span class="info">6.9</span>
+            <span class="info">{{movie.vote_average}}</span>
         </div>
-        <span class="bottom">1000 (votes)</span>
+        <span class="bottom">{{movie.vote_count}} (votes)</span>
 
     </div>
 </div>
@@ -70,6 +76,14 @@
     <h1>Companies:</h1>
 
     <div class="companies">
-        <img src="" alt="">
+        <div class="companie" *ngFor="let companie of movie.production_companies" >
+            <img 
+                src="http://image.tmdb.org/t/p/w500/{{companie.logo_path}}" 
+                [alt]="companie.name"
+                *ngIf="companie.logo_path !== null"
+            class="companieImg"
+            >
+        </div>
+        
     </div>
 </div>

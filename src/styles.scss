@@ -23,3 +23,73 @@ body {
     font-family: 'Hind Siliguri', sans-serif; 
     font-size: 14px;
 }
+
+.card {
+    position: relative;
+    height: 18em;
+    width: 255px;
+    background: rgba(192, 85, 85, 0.76);
+    color: #fff;
+    margin-bottom: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 14px;
+   
+    h1 {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: 0;
+        font-size: 22px;
+        color: white;
+    }
+
+    .bg-filter {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 87%;
+        mask: linear-gradient(to bottom, transparent, rgb(0, 0, 0) 35%);
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.9457123914018732) 38%, rgba(0,0,0,0.3490737359396884) 100%);
+    }
+
+    img {
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        object-fit: cover;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+
+    &:hover img{
+        transform: scale(1.2);
+        filter: blur(0px);
+
+    }
+}
+
+h1 {
+    margin-bottom: 15px;
+}
+
+.icon-btn {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    font-size: 20px;
+    background: white;
+    z-index: 1;
+    padding: 2px 10px;
+    border-radius: 10px;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        transform: scale(0.85);
+    }
+}

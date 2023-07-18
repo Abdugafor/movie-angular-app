@@ -17,13 +17,14 @@
         
             </div>
         </div>
+    </div>
 
-        <div class="btnBlock">
-            <app-spinner *ngIf="isShowSpinner"></app-spinner>
-            <button class="btnLoad" (click)="onLoadMore()" *ngIf="!isShowSpinner">
-               Load More
-            </button>
-        </div>
+    <div class="btnBlock">
+        <app-spinner *ngIf="isShowSpinner" class="spinner"></app-spinner>
+
+        <button class="btnLoad" (click)="onLoadMore()" *ngIf="!isShowSpinner">
+           Load More
+        </button>
     </div>
 </div>
 

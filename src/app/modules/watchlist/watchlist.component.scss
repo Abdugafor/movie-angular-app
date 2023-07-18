@@ -1,0 +1,44 @@
+.watchlist {
+    margin: 0 30px;
+
+    .watchlist-card {
+        width: 285px;
+        height: 12em;
+    }
+
+    .delete {
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        right: 15px;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 30px; 
+        align-items: center;
+    }
+}
+
+.noItem {
+    position: relative;
+    background: #161616;
+    height: 12em;
+    cursor: default;
+    text-align: center;
+
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.favorite {
+    .bg-filter {
+        background: rgb(255,44,44);
+        background: linear-gradient(0deg, rgba(255,44,44,1) 0%, rgba(255,0,0,0.8519782913165266) 27%, rgba(255,0,0,0.6110819327731092) 43%, rgba(255,0,0,0.40379901960784315) 58%, rgba(255,0,0,0) 100%);
+    }
+}
