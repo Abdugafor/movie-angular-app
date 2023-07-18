@@ -19,7 +19,8 @@
         </div>
 
         <div class="btnBlock">
-            <button class="btnLoad" (click)="onLoadMore()" >
+            <app-spinner *ngIf="isShowSpinner"></app-spinner>
+            <button class="btnLoad" (click)="onLoadMore()" *ngIf="!isShowSpinner">
                Load More
             </button>
         </div>
