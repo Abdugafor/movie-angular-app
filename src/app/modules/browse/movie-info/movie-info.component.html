@@ -1,20 +1,20 @@
 <div class="top-info">
-    <img src="../assets/marvel.jpg" alt="" class="background">
+    <img src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt="" class="background">
 
    <div class="top-info-container">
     <div class="poster-block">
-        <img src="../assets/spid.jpg" alt="" class="poster">
+        <img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" class="poster">
     </div>
 
     <div class="info-container">
         <div class="info">
             <span class="infoName">Name:</span>
-            <h1>Spider-man No way home</h1>
+            <h1>{{movie.title}}</h1>
         </div>
 
         <div class="info">
             <span class="infoName">About:</span>
-            <p class="about">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur necessitatibus vel culpa, sint voluptate provident.</p>
+            <p class="about">{{movie.overview}}</p>
         </div>
 
         <div class="info">
@@ -28,12 +28,12 @@
             <div class="info">
                 <span class="infoName">Language:</span>
                 <span class="country"></span>
-                <span class="countryName">En</span>
+                <span class="countryName">{{movie.original_language | uppercase}}</span>
             </div>
     
             <div class="info">
                 <span class="infoName">Status:</span>
-                <span class="status">Released</span>
+                <span class="status">{{movie.status}}</span>
             </div>
         </div>
     </div>
@@ -63,5 +63,13 @@
         </div>
         <span class="bottom">1000 (votes)</span>
 
+    </div>
+</div>
+
+<div class="companies-container">
+    <h1>Companies:</h1>
+
+    <div class="companies">
+        <img src="" alt="">
     </div>
 </div>

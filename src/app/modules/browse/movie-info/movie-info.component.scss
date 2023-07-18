@@ -104,5 +104,14 @@
         }
 
     }
-    
+}
+
+.companies-container {
+    text-align: center;
+    padding: 30px;
+
+    .companies {
+        display: flex;
+        justify-content: space-between;
+    }
 }
