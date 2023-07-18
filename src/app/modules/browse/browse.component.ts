@@ -19,16 +19,16 @@ export class BrowseComponent implements OnInit {
   ngOnInit(): void {
     this.isShowLoader = true
 
-  this.httpService.getMovies()
-    .subscribe({
-      next: (res: any) => this.movies = res.results,
-      error: error => console.log('error'),
-      complete: () => {
-        this.parties = this.movies.splice(0, 4)
-        this.bigMovie = this.movies[this.RandomMovie()]
-        this.isShowLoader = false
-      }
-    })
+  // this.httpService.getMovies()
+  //   .subscribe({
+  //     next: (res: any) => this.movies = res.results,
+  //     error: error => console.log('error'),
+  //     complete: () => {
+  //       this.parties = this.movies.splice(0, 4)
+  //       this.bigMovie = this.movies[this.RandomMovie()]
+  //       this.isShowLoader = false
+  //     }
+  //   })
   }
 
   

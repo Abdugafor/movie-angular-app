@@ -9,10 +9,12 @@ $padd50: 50px;
 .sidebar {
     @include dflex(column, space-between);
     width: 400px;
+    height: 100vh;
     border-right: 1px solid rgba(128, 128, 128, 0.26);
     box-sizing: border-box;
     text-align: left;
     padding: 30px 0;
+
 
     .sidebar-top {
         @include dflex(column, space-between);

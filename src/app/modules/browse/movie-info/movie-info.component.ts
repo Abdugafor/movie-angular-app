@@ -21,7 +21,10 @@ export class MovieInfoComponent implements OnDestroy, OnInit{
 
   ngOnInit(): void {
     this.httpService.getData('https://api.themoviedb.org/3/movie/' + this.id)
-    .subscribe(res => this.movie = res)
+    .subscribe(res => {
+      this.movie = res
+      console.log(this.movie)
+    })
   }
 
   ngOnDestroy(): void {
