@@ -1,5 +1,8 @@
-import { CanActivateFn } from '@angular/router';
+import { inject, Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot } from '@angular/router';
+import { DatabaseService } from 'src/app/database.service';
 
-export const userProfileGuard: CanActivateFn = (route, state) => {
-  return false;
+
+export const userProfileGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot,) => {
+  return true
 };

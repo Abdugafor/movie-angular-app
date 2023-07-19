@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { getAuth } from 'firebase/auth';
+import { DatabaseService } from 'src/app/database.service';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +8,13 @@ import { getAuth } from 'firebase/auth';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  auth = getAuth()
 
-  constructor (private router: Router) {}
+  constructor (private router: Router, private databaseService: DatabaseService) {}
 
   onNavigateUser() {
-    if (this.auth.currentUser !== null) {
+    const user = this.databaseService.getUserState()
+
+    if (user !== null) {
       this.router.navigate(['profile'])
     }else {
       this.router.navigate(['login'])

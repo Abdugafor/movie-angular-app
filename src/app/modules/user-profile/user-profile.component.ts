@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class UserProfileComponent {
 
+  onConImg(img) {
+    if (img.target.files && img.target.files[0]) {
+
+      console.log(img.target.files[0])
+  }
+  }
 }

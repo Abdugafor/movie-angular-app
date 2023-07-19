@@ -15,8 +15,8 @@ const routes: Routes = [
   {path: 'watchlist', component: WatchlistComponent},
   {path: 'comingsoon', component: ComingsoonComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignupComponent, canActivate: [userProfileGuard]},
-  {path: 'profile', component: UserProfileComponent}
+  {path: 'signup', component: SignupComponent},
+  {path: 'profile', component: UserProfileComponent, canActivate: [userProfileGuard]}
 ];
 
 @NgModule({

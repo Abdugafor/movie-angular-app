@@ -5,6 +5,7 @@ import { collection, getDocs, getFirestore, addDoc } from 'firebase/firestore'
 @Injectable({
   providedIn: 'root'
 })
+
 export class DatabaseService {
   auth = getAuth();
   db = getFirestore()
@@ -45,5 +46,9 @@ export class DatabaseService {
         
         console.log(errorCode)
       });
+  }
+
+  public getUserState() {
+    return this.auth.currentUser
   }
 }
