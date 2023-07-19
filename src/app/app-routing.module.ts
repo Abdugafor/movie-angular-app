@@ -6,6 +6,8 @@ import { WatchlistComponent } from './modules/watchlist/watchlist.component';
 import { MovieInfoComponent } from './modules/browse/movie-info/movie-info.component';
 import { LoginComponent } from './modules/authorization/login/login.component';
 import { SignupComponent } from './modules/authorization/signup/signup.component';
+import { UserProfileComponent } from './modules/user-profile/user-profile.component';
+import { userProfileGuard } from './modules/user-profile/user-profile.guard';
 
 const routes: Routes = [
   {path: '', component: BrowseComponent},
@@ -13,7 +15,8 @@ const routes: Routes = [
   {path: 'watchlist', component: WatchlistComponent},
   {path: 'comingsoon', component: ComingsoonComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignupComponent},
+  {path: 'signup', component: SignupComponent, canActivate: [userProfileGuard]},
+  {path: 'profile', component: UserProfileComponent}
 ];
 
 @NgModule({

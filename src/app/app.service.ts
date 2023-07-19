@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
   watchedMovies: any[] = []
   favoriteMovies: any[] = []
-  
+
   constructor() { }
 
   public addWatchedMovie(movie: any): void {
@@ -52,4 +53,5 @@ export class AppService {
     this.favoriteMovies = this.favoriteMovies.filter(item => item.id !== movieId)
   }
 
+ 
 }

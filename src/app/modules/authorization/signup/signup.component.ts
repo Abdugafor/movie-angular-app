@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import { DatabaseService } from 'src/app/database.service';
 
-interface ISingUp {
-  username: string,
-  email: string,
-  password: string,
-  repeatPassword: string
-}
+
 
 @Component({
   selector: 'app-signup',
@@ -17,12 +12,11 @@ interface ISingUp {
 export class SignupComponent {
   isShowPasswordError = false
   isShowEmptyFieldError = false
-  auth = getAuth();
 
-  constructor (private router: Router) {}
+  constructor (private router: Router, private database: DatabaseService) {}
   
 
-  onSubmit(email: string, password: string, secondPassword: string): void {
+  onSubmit(username: string, email: string, password: string, secondPassword: string): void {
     if (password !== '' && secondPassword !== '' && password !== secondPassword) {
       this.isShowPasswordError = true
     }
@@ -34,21 +28,12 @@ export class SignupComponent {
       this.isShowEmptyFieldError = true
     } 
     else {
-
-      createUserWithEmailAndPassword(this.auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          
-          console.log(errorCode)
-        });
+      this.database.signUpUser(username, email, password)
+      
     }
   }
 
   onNavigate() {
-    this.router.navigate(['/watchlist'])
+    this.router.navigate(['/profile'])
   }
 }

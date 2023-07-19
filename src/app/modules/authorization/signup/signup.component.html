@@ -4,6 +4,15 @@
   <form class="form">
     <h1>Sign up</h1>
 
+    <div class="flex-column">
+      <label>Username </label>
+    </div>
+      
+      <div class="inputForm" [ngClass]="isShowEmptyFieldError ? 'inputError' : ''">
+       <img src="../assets/svg/user.svg" alt="" class="user">
+        <input placeholder="Enter a username" class="input" type="email"  #username>
+      </div>
+
         <div class="flex-column">
           <label>Email </label>
         </div>
@@ -37,7 +46,7 @@
         <button 
           class="button-submit" 
           type="button" 
-          (click)="onSubmit(email.value, pasword.value, repeatPassword.value)"
+          (click)="onSubmit(username.value, email.value, pasword.value, repeatPassword.value)"
         >Sign Up</button>
     
         <p class="p">Have already an accaunt? <a class="span" [routerLink]="['/login']">Log In</a></p>

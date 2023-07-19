@@ -22,6 +22,7 @@ import { CardComponent } from './components/card/card.component';
 import { MovieInfoCardComponent } from './components/movie-info-card/movie-info-card.component';
 import { LoginComponent } from './modules/authorization/login/login.component';
 import { SignupComponent } from './modules/authorization/signup/signup.component';
+import { UserProfileComponent } from './modules/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SignupComponent } from './modules/authorization/signup/signup.component
     CardComponent,
     MovieInfoCardComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

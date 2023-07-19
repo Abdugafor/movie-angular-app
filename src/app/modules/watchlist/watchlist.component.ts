@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
+import { DatabaseService } from 'src/app/database.service';
 
 @Component({
   selector: 'app-watchlist',
@@ -9,10 +10,11 @@ import { AppService } from 'src/app/app.service';
 export class WatchlistComponent implements OnInit {
   watchedMovies
   favoriteMovies: any[] = []
-  constructor(private appService: AppService) {}
+  constructor(private appService: AppService, private database:  DatabaseService) {}
 
   ngOnInit(): void {
     this.onRefresh()
+    this.database.getData()
   }
 
   public onRemoveFavorite(movieId: number): void {

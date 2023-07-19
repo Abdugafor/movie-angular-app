@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword  } from "firebase/auth"
+import { getAuth, signInWithEmailAndPassword  } from "firebase/auth"
 
 @Component({
   selector: 'app-login',
@@ -27,12 +27,12 @@ export class LoginComponent {
       signInWithEmailAndPassword(this.auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
+
+          this.router.navigate(['/profile'])
         })
         .catch((error) => {
           const errorCode = error.code;
-          const errorMessage = error.message;
   
-          console.log(errorCode)
           if (errorCode === 'auth/wrong-password') {
             this.isShowPasswordError = true
           }else if (errorCode === 'auth/invalid-email') {
@@ -43,18 +43,13 @@ export class LoginComponent {
             this.isShowInvalidEmail = false
           }
         });
+
+        
     }
   }
 
   onNavigate() {
     this.router.navigate(['/watchlist'])
 
-    onAuthStateChanged(this.auth, user => {
-      if (user !== null) {
-        console.log('loged in')
-      }else {
-        console.log('not loged')
-      }
-    })
   }
 }
