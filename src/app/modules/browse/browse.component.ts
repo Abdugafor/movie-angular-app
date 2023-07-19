@@ -19,7 +19,7 @@ export class BrowseComponent implements OnInit {
   ngOnInit(): void {
     this.isShowLoader = true
 
-  this.httpService.getMovies()
+  this.httpService.getMovies('1')
     .subscribe({
       next: (res: any) => this.movies = res.results,
       error: error => console.log('error'),

@@ -1,3 +1,8 @@
 <app-spinner *ngIf="isShowSpinner"></app-spinner>
 
-<app-movie-info-card *ngFor="let movie of movies" [movie]="movie"></app-movie-info-card>
+<app-movie-info-card
+    *ngFor="let movie of movies" 
+    [movie]="movie" 
+    (click)="onNavigate(movie.id)"
+    class="soon"
+ ></app-movie-info-card>

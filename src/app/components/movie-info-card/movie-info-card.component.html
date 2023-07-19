@@ -19,7 +19,7 @@
             <p class="about">{{movie.overview}}</p>
         </div>
 
-        <div class="info">
+        <div class="info" *ngIf="movie.genres">
             <span class="infoName">Genres:</span>
             <span class="genre-tag" *ngFor="let genre of movie.genres">{{genre.name}}</span>
         </div>
@@ -32,8 +32,8 @@
             </div>
     
             <div class="info">
-                <span class="infoName">Status:</span>
-                <span class="status">{{movie.status}}</span>
+                <span class="infoName">{{movie.status ? 'Status' : 'Release Date:'}}</span>
+                <span class="status" [ngClass]="movie.status ? '' : 'release'">{{movie.status ? movie.status : movie.release_date}}</span>
             </div>
         </div>
     </div>

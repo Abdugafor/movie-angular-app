@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { getAuth } from 'firebase/auth';
 import { HttpService } from './http.service';
 
 @Component({
@@ -7,14 +8,19 @@ import { HttpService } from './http.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
+  auth = getAuth()
+
   constructor (private httpService: HttpService) {}
 
   fetchData() {
-    this.httpService.getMovies()
+    this.httpService.getMovies('1')
       .subscribe({
         next: res => console.log(res),
         error: err => console.log(err)
       })
+  }
+
+  onLogout() {
+    this.auth.signOut()
   }
 }

@@ -8,11 +8,13 @@ $padd50: 50px;
 
 .sidebar {
     @include dflex(column, space-between);
+    position: fixed;
     width: 400px;
     border-right: 1px solid rgb(30 30 30);
     box-sizing: border-box;
     text-align: left;
     padding: 30px 0;
+    height: 100%;
 
 
     .sidebar-top {
@@ -83,6 +85,7 @@ $padd50: 50px;
 
 .content {
     width: 75%;
+    margin-left: 400px;
 }
 
 .logout  {

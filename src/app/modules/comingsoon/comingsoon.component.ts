@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppService } from 'src/app/app.service';
 import { HttpService } from 'src/app/http.service';
 
 @Component({
@@ -10,7 +12,11 @@ export class ComingsoonComponent implements OnInit {
   movies
   isShowSpinner = false
 
-  constructor (private httpService: HttpService) {}
+  constructor (
+    private httpService: HttpService, 
+    private router: Router,
+    private appService: AppService
+  ) {}
 
   ngOnInit(): void {
     this.isShowSpinner = true
@@ -20,9 +26,15 @@ export class ComingsoonComponent implements OnInit {
       next: (res: any) => this.movies = res.results,
       error: err => console.log(err),
       complete: () => {
-        console.log(this.movies)
         this.isShowSpinner = false
       }
     })
+  }
+
+  onNavigate(movieId: number): void {
+    const movie = this.movies.filter(item => item.id === movieId)[0]
+
+    this.appService.addWatchedMovie(movie)
+    this.router.navigate(['browse', movieId])
   }
 }

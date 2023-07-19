@@ -16,8 +16,8 @@ export class HttpService {
     })
   }
 
-  public getMovies() {
-    return this.getData('https://api.themoviedb.org/3/movie/popular')
+  public getMovies(pageNumber: string) {
+    return this.getData('https://api.themoviedb.org/3/movie/popular' + '?page=' + pageNumber)
   }
 
  

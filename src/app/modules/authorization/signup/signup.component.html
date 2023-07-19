@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="backdrop-filter" (click)="onNavigate()"></div>
+
+  <form class="form">
+    <h1>Sign up</h1>
+
+        <div class="flex-column">
+          <label>Email </label>
+        </div>
+          
+          <div class="inputForm" [ngClass]="isShowEmptyFieldError ? 'inputError' : ''">
+           <img src="../assets/svg/email.svg" alt="">
+            <input placeholder="Enter your Email" class="input" type="email" #email pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+          </div>
+        
+        <div class="flex-column">
+          <label>Password </label></div>
+          <div class="inputForm"  [ngClass]="isShowPasswordError || isShowEmptyFieldError ? 'inputError' : ''">
+           <img src="../assets/svg/password.svg" alt="">
+            <input placeholder="Enter your Password" class="input" type="password" #pasword>
+          </div>
+
+          <div class="flex-column">
+            <label>Repeat a password </label></div>
+            <div class="inputForm" [ngClass]="isShowPasswordError || isShowEmptyFieldError ? 'inputError' : ''">
+             <img src="../assets/svg/password.svg" alt="">
+              <input 
+                placeholder="Repeat your password" 
+                class="input" type="password"
+                #repeatPassword
+               >
+            </div>
+            <p class="error" *ngIf="isShowPasswordError">! Passwords do not match</p>
+            <p class="error" *ngIf="isShowEmptyFieldError">! Please fill empty fields</p>
+            
+        
+        <button 
+          class="button-submit" 
+          type="button" 
+          (click)="onSubmit(email.value, pasword.value, repeatPassword.value)"
+        >Sign Up</button>
+    
+        <p class="p">Have already an accaunt? <a class="span" [routerLink]="['/login']">Log In</a></p>
+        <p class="p line">Or With</p>
+    
+        <div class="flex-row">
+    
+          <button class="btn google">
+           <img src="../assets/svg/google.svg" alt="">
+            Google 
+          </button>
+    
+          <button class="btn apple">
+            <img src="../assets/svg/apple.svg" alt="">
+            Apple 
+          </button>
+      
+        </div>
+    </form>
+</div>

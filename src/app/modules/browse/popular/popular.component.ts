@@ -17,6 +17,7 @@ export class PopularComponent{
   @Input() movies: any = []
   moreMovies: any = []
   isShowSpinner = false
+  currentPage = 2
 
   constructor(
       private httpService: HttpService, 
@@ -27,7 +28,7 @@ export class PopularComponent{
   onLoadMore() {
     this.isShowSpinner = true
 
-   this.httpService.getData('https://api.themoviedb.org/3/movie/top_rated')
+   this.httpService.getMovies(`${this.currentPage}`)
     .subscribe({
          next: (res: any) => this.moreMovies = res.results,
          error: error => console.log('error'),
@@ -35,6 +36,7 @@ export class PopularComponent{
            this.moreMovies.forEach(movie => {
             this.movies.push(movie)
             this.isShowSpinner = false
+            this.currentPage++
            });
          }
     })

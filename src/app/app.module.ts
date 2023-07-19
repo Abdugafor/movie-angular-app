@@ -20,6 +20,8 @@ import { CountBudgetPipe } from './pipes/count-budget.pipe';
 import { CountBudgetLength } from './pipes/countBudgetLength.pipe';
 import { CardComponent } from './components/card/card.component';
 import { MovieInfoCardComponent } from './components/movie-info-card/movie-info-card.component';
+import { LoginComponent } from './modules/authorization/login/login.component';
+import { SignupComponent } from './modules/authorization/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { MovieInfoCardComponent } from './components/movie-info-card/movie-info-
     CountBudgetPipe,
     CountBudgetLength,
     CardComponent,
-    MovieInfoCardComponent
+    MovieInfoCardComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
