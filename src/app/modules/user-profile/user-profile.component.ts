@@ -1,5 +1,8 @@
 import { Component, inject, OnDestroy} from '@angular/core';
+
 import { Auth, User, user } from '@angular/fire/auth';
+import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
+
 import { Subscription } from 'rxjs'
 
 import { DatabaseService } from 'src/app/database.service';
@@ -15,9 +18,12 @@ export class UserProfileComponent  implements OnDestroy{
   private user = null
   private user$ = user(this.auth)
   private userSubscription: Subscription
+  private storage: Storage = inject(Storage)
   private selectedFile: File
-  private editMode = false
   private url 
+
+  public editMode = false
+
 
   constructor(private databaseService: DatabaseService){
     this.userSubscription = this.user$.subscribe((aUser: User | null) => {
@@ -34,30 +40,28 @@ export class UserProfileComponent  implements OnDestroy{
     
      this.selectedFile = img.target.files[0]
 
-    //  const storage = getStorage();
+     const imageRef = ref(this.storage, this.user.uid)
 
-    //  const imageRef = ref(storage, 'userPhoto')
-
-    //  uploadBytes(imageRef, this.selectedFile).then((snapshot) => {
-    //     getDownloadURL(imageRef).then((url) => {
-    //       this.url = url
-    //     })
-    //     .catch(err => {
-    //       console.log(err, 'while export image')
-    //     })
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
+     uploadBytes(imageRef, this.selectedFile).then((snapshot) => {
+        getDownloadURL(imageRef).then((url) => {
+          this.url = url
+        })
+        .catch(err => {
+          console.log(err, 'while export image')
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
   }
 
-  uploadImg() {
-    
+  onActivateEditMode() {
+    this.editMode = true
   }
 
-  onChangeEditMode() {
-    this.editMode = !this.editMode
+  onSubmit() {
+    this.editMode = false
   }
 
  

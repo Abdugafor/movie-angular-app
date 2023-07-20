@@ -5,15 +5,25 @@
         <div class="info-container">
             <div class="img-block">
                 <img src="../assets/spid.jpg" alt=""  class="avatar">
-                <div class="filter"><i class="fa-solid fa-camera"></i></div>
+                
+                <div *ngIf="editMode">
+                    <input type="file" value="">
+                    <i class="fa-solid fa-camera"></i>
+                </div>
             </div>
 
             <div class="info">
-                <h1>Abdugafor Gafarov <i class="fa-solid fa-pen edit" (click)="onChangeEditMode()"></i></h1>
-                <span>email address: <span class="email">accfor@gmail.com</span></span>
+                    <div *ngIf="!editMode">
+                        <h1>Abdugafor Gafarov <i class="fa-solid fa-pen edit" (click)="onActivateEditMode()"></i></h1>
+                    </div>
+                    <input type="text" *ngIf="editMode" class="userInput">
+                    <span>email address: <span class="email">accfor@gmail.com</span></span>
+
+                    <button type="button" (click)="onSubmit()" class="btn" *ngIf="editMode">Save</button>
             </div>
         </div>
     </div>
+
    
 
    
