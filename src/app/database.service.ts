@@ -1,33 +1,16 @@
-import { Injectable } from '@angular/core';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
-import { collection, getDocs, getFirestore, addDoc } from 'firebase/firestore'
+import { Injectable, inject } from '@angular/core';
+import { Firestore, setDoc, doc } from '@angular/fire/firestore';
+import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DatabaseService {
-  auth = getAuth();
-  db = getFirestore()
-  collRef = collection(this.db, 'Users')
+  private auth: Auth = inject(Auth)
+  private firestore: Firestore = inject(Firestore)
 
-  constructor() { }
-
-  public getData() {
-  
-    getDocs(this.collRef)
-      .then((snapshot) => {
-        let users = []
-
-        snapshot.docs.forEach((doc) => {
-          users.push({...doc.data(), id: doc.id})
-        })
-
-        console.log(users)
-      })
-  }
-
-  
+  constructor() {}
 
   public signUpUser(username, email, password) {
     
@@ -35,20 +18,30 @@ export class DatabaseService {
       .then((userCredential) => {
         const user = userCredential.user;
 
-        addDoc(this.collRef, {
-          username: username,
-          email: email
-        } )
+        setDoc(doc(this.firestore, 'Users', user.uid), {
+            name: username,
+            email: email,
+            photoURL: null
+        })
+
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
         
         console.log(errorCode)
       });
+
+      
   }
 
-  public getUserState() {
-    return this.auth.currentUser
+  public logOut() {
+    this.auth.signOut()
   }
+
+  public uploadImage(userUID, img) {
+    setDoc(doc(this.firestore, 'Users', userUID), {
+      photoURL: img
+    })
+  }
+
 }

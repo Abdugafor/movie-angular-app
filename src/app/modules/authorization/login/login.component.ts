@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { getAuth, signInWithEmailAndPassword  } from "firebase/auth"
+import { getAuth, signInWithEmailAndPassword  } from "@angular/fire/auth"
 
 @Component({
   selector: 'app-login',

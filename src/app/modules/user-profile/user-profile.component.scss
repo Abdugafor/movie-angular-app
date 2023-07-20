@@ -1,0 +1,73 @@
+$grayColor: rgba(145, 145, 145, 0.685);
+
+.container {
+    margin: 0 30px;
+    display: flex;
+
+    .info-container {
+        display: flex;
+        gap: 40px;
+    }
+}
+
+span {
+    color: $grayColor;
+
+    .email {
+        color: white;
+        font-size: 16px;
+        margin-left: 10px;
+    }
+}
+
+.edit {
+    color: $grayColor;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.heading {
+    margin-bottom: 30px;
+    font-size: 30px;
+    color:  $grayColor;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+
+}
+
+.img-block {
+    position: relative;
+
+    .filter {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        background: rgba(0, 0, 0, 0.404);
+        position: absolute;
+        cursor: pointer;
+        transition: background 0.3s;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.562);
+        }
+
+        .fa-camera {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            color: white;
+        }
+    }
+}

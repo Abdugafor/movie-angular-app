@@ -29,11 +29,11 @@ export class SignupComponent {
     } 
     else {
       this.database.signUpUser(username, email, password)
-      
+      this.router.navigate(['/profile'])
     }
   }
 
   onNavigate() {
-    this.router.navigate(['/profile'])
+    this.router.navigate(['/browse'])
   }
 }
