@@ -23,7 +23,7 @@
    </div>
 
 
-    <div class="logout" (click)="onLogout()">
+    <div class="logout" (click)="onLogout()" *ngIf="isLogedIn">
       <span><i class="fa-solid fa-right-from-bracket" ></i> Logout</span>
     </div>
   </div>

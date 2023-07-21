@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Auth, User, user } from '@angular/fire/auth';
+import { Observable, Subscription } from 'rxjs'
+
 import { DatabaseService } from './database.service';
 import { HttpService } from './http.service';
 
@@ -7,10 +12,24 @@ import { HttpService } from './http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  private auth: Auth = inject(Auth);
+  user$ = user(this.auth)
+  isLogedIn: User | null
 
+  constructor (
+    private httpService: HttpService, 
+    private databaseService: DatabaseService,
+    private router: Router
+    ) {
+      this.user$.subscribe((aUser: User | null) => {
+        this.isLogedIn = aUser
+      })
+    }
 
-  constructor (private httpService: HttpService, private databaseService: DatabaseService) {}
+  ngOnInit(): void {
+    this.databaseService
+  }
 
   fetchData() {
     this.httpService.getMovies('1')
@@ -21,6 +40,14 @@ export class AppComponent {
   }
 
   onLogout() {
+   const currentRoute =  this.router.url
+   
+   if (currentRoute !== '/') {
+    this.router.navigate(['/'])
+   }else {
+    this.router.navigate(['/comingsoon'])
+   }
+
    this.databaseService.logOut()
   }
 }
