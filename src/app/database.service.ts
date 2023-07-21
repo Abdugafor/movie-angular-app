@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, setDoc, doc } from '@angular/fire/firestore';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
+// import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 export class DatabaseService {
   private auth: Auth = inject(Auth)
   private firestore: Firestore = inject(Firestore)
+  // private storage: Storage = inject(Storage)
 
   constructor() {}
 
@@ -38,10 +40,24 @@ export class DatabaseService {
     this.auth.signOut()
   }
 
-  public uploadImage(userUID, img) {
-    setDoc(doc(this.firestore, 'Users', userUID), {
-      photoURL: img
-    })
-  }
+  // public uploadImage(userUID, img) {
+  //   const imageRef = ref(this.storage, userUID)
+
+  //    uploadBytes(imageRef, img).then((snapshot) => {
+  //       getDownloadURL(imageRef).then((url) => {
+  //         setDoc(doc(this.firestore, 'Users', userUID), {
+  //           photoURL: url
+  //         })
+  //       })
+  //       .catch(err => {
+  //         console.log(err, 'while export image')
+  //       })
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+
+   
+  // }
 
 }

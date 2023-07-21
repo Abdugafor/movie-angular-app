@@ -1,7 +1,6 @@
 import { Component, inject, OnDestroy} from '@angular/core';
 
 import { Auth, User, user } from '@angular/fire/auth';
-import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 
 import { Subscription } from 'rxjs'
 
@@ -18,7 +17,6 @@ export class UserProfileComponent  implements OnDestroy{
   private user = null
   private user$ = user(this.auth)
   private userSubscription: Subscription
-  private storage: Storage = inject(Storage)
   private selectedFile: File
   private url 
 
@@ -39,20 +37,6 @@ export class UserProfileComponent  implements OnDestroy{
     if (img.target.files && img.target.files[0]) {
     
      this.selectedFile = img.target.files[0]
-
-     const imageRef = ref(this.storage, this.user.uid)
-
-     uploadBytes(imageRef, this.selectedFile).then((snapshot) => {
-        getDownloadURL(imageRef).then((url) => {
-          this.url = url
-        })
-        .catch(err => {
-          console.log(err, 'while export image')
-        })
-      })
-      .catch(err => {
-        console.log(err)
-      })
     }
   }
 

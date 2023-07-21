@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { getAuth, provideAuth } from '@angular/fire/auth';
-import { environment } from './environments/environment';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+
+import { environment } from './environments/environment';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -56,9 +58,9 @@ import { UserProfileComponent } from './modules/user-profile/user-profile.compon
     HttpClientModule,
     RouterModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    provideAuth(() => getAuth()),
   ],
   providers: [],
   bootstrap: [AppComponent]
