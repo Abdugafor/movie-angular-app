@@ -12,7 +12,7 @@
 # Interface
 ![Web-page preview](https://github.com/Abdugafor/portfolio/blob/main/images/movie.jpg?raw=true)
 
-# Deploy (live-page preview)
+# Deploy (live-app preview)
 https://classy-paprenjak-1ffbcb.netlify.app/
 
 
