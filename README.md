@@ -1,7 +1,7 @@
 # MovieApp
 
 
-### About
+#About
  IMDB clone. Internet movie database using Angular and [TMDB](https://developer.themoviedb.org/docs) API. Width full authentication using Firebase.
  `Features:`
  * Search Movie
@@ -9,10 +9,10 @@
  * Add to favorites
 
  
-### Interface
+# Interface
 ![Web-page preview](https://github.com/Abdugafor/portfolio/blob/main/images/movie.jpg?raw=true)
 
-### Deploy (live-page preview)
+# Deploy (live-page preview)
 https://classy-paprenjak-1ffbcb.netlify.app/
 
 
