@@ -1,7 +1,7 @@
 # MovieApp
 
 
-#About
+# About
  IMDB clone. Internet movie database using Angular and [TMDB](https://developer.themoviedb.org/docs) API. Width full authentication using Firebase.
  `Features:`
  * Search Movie
