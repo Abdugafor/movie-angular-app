@@ -1,10 +1,6 @@
 import { Component, inject, OnDestroy} from '@angular/core';
-
 import { Auth, User, user } from '@angular/fire/auth';
-
 import { Subscription } from 'rxjs'
-
-import { DatabaseService } from 'src/app/database.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,16 +10,13 @@ import { DatabaseService } from 'src/app/database.service';
 
 export class UserProfileComponent  implements OnDestroy{
   private auth: Auth = inject(Auth)
-  private user = null
+  public user = null
   private user$ = user(this.auth)
   private userSubscription: Subscription
-  private selectedFile: File
-  private url 
-
-  public editMode = false
 
 
-  constructor(private databaseService: DatabaseService){
+
+  constructor(){
     this.userSubscription = this.user$.subscribe((aUser: User | null) => {
       this.user = aUser
     })
@@ -31,21 +24,6 @@ export class UserProfileComponent  implements OnDestroy{
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe()  
-  }
-
-  onGetImg(img) {
-    if (img.target.files && img.target.files[0]) {
-    
-     this.selectedFile = img.target.files[0]
-    }
-  }
-
-  onActivateEditMode() {
-    this.editMode = true
-  }
-
-  onSubmit() {
-    this.editMode = false
   }
 
  

@@ -86,3 +86,13 @@ p {
         }
     }
 }
+
+@media all and (max-width: 900px) {
+   .big-img-block {
+    height: 10em; 
+
+    h1 {
+        font-size: 15px !important;
+    }
+   }
+}

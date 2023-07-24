@@ -113,3 +113,14 @@ hr {
     margin-right: auto;
     border: 0.01em solid rgba(128, 128, 128, 0.507);
 }
+
+
+@media all and (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}

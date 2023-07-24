@@ -100,3 +100,17 @@ h1 {
         filter: blur(0px);
     }
 }
+
+@media all and (max-width: 900px) {
+    body {
+        font-size: 11px !important;
+    }
+    .card {
+        height: 10em;
+        width: 121px;
+    }
+
+    .card h1 {
+        font-size: 10px;
+    }
+}
