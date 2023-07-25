@@ -114,6 +114,11 @@ hr {
     border: 0.01em solid rgba(128, 128, 128, 0.507);
 }
 
+.bar {
+    display: none;
+    font-size: 20px;
+    margin-left: 20px;
+}
 
 @media all and (max-width: 900px) {
     .sidebar {
@@ -124,4 +129,8 @@ hr {
         margin-left: 0;
         width: 100%;
     }
+    .bar {
+        display: block;
+    }
 }
+

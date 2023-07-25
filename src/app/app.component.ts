@@ -14,6 +14,7 @@ import { HttpService } from './http.service';
 })
 export class AppComponent implements OnInit {
   private auth: Auth = inject(Auth);
+  public isShowSidebar = false
   user$ = user(this.auth)
   isLogedIn: User | null
 
@@ -37,6 +38,10 @@ export class AppComponent implements OnInit {
         next: res => console.log(res),
         error: err => console.log(err)
       })
+  }
+
+  onShowSidebar() {
+    this.isShowSidebar = !this.isShowSidebar
   }
 
   onLogout() {
