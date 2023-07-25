@@ -22,3 +22,10 @@ p {
     position: relative;
     padding: 10px 30px; 
 }
+
+
+@media all and (max-width: 900px) {
+    .container {
+         width: 100%;
+    }
+}

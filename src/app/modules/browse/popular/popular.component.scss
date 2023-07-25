@@ -46,6 +46,7 @@ h1 {
 
 @media all and (max-width: 900px) {
     .grid {
-        grid-template-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        justify-items: center !important;
     }
 }

@@ -22,6 +22,7 @@ body {
     color: white;
     font-family: 'Hind Siliguri', sans-serif; 
     font-size: 14px;
+    width: 100%;
 }
 
 
@@ -102,12 +103,13 @@ h1 {
 }
 
 @media all and (max-width: 900px) {
+    
     body {
         font-size: 11px !important;
     }
     .card {
-        height: 10em;
-        width: 121px;
+        height: 12em;
+        width: 118px;
     }
 
     .card h1 {
