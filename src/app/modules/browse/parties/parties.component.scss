@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     gap: 30px;
+    margin-bottom: 15px;
 }
 
 .parties {
@@ -59,7 +60,19 @@
     }
 }
 
-h1 {
-    margin-bottom: 15px;
-}
 
+
+@media all and (max-width: 900px) {
+    .party-card {
+        width: 152px !important;
+        height: 80px !important;
+    }
+
+    .top-block {
+        img {
+            width: 45px !important;
+            height: 29px !important;
+            border-radius: 5px !important;
+        }
+    }
+}

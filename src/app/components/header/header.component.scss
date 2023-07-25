@@ -72,13 +72,18 @@ a {
 
 @media all and (max-width: 900px) {
     .header {
-        padding: 15px !important;
         width: 100%;
     }
 
     input {
-        padding: 10px 40px !important;
-        width: 80px !important;
+        padding: 6px 26px !important;
+        width: 147px !important;
+        font-size: 11px ;
+    }
+
+    i {
+        left: 11px !important;
+        top: 10px !important;
     }
 
     .left-side {
