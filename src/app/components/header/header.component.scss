@@ -54,6 +54,8 @@
     }
 
     .right-side {
+        display: flex;
+
         i {
             font-size: 25px;
             cursor: pointer;
@@ -89,4 +91,5 @@ a {
     .left-side {
         gap: 15px  !important;
     }
+
 }

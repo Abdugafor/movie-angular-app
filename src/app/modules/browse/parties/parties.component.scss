@@ -64,8 +64,8 @@
 
 @media all and (max-width: 900px) {
     .party-card {
-        width: 152px !important;
-        height: 80px !important;
+        width: 125px !important;
+        height: 94px !important;
     }
 
     .top-block {
@@ -74,5 +74,9 @@
             height: 29px !important;
             border-radius: 5px !important;
         }
+    }
+
+    h4 {
+        font-size: 12px !important;
     }
 }
