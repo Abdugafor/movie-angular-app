@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="sidebar">
+  <div class="sidebar" [ngClass]="isShowSidebar ? 'sidebarShow' : '' ">
    <div class="sidebar-top">
     <h1>Lernard<span>Movies</span></h1>
 
@@ -32,8 +32,10 @@
     
     <app-header></app-header>
 
-    <i class="fa-solid fa-bars bar" style="color: #ffffff;" (click)="onShowSidebar()"></i>
-
+    <div class="bar" (click)="onShowSidebar()">
+      <i class="fa-solid fa-bars bar" style="color: #ffffff;" *ngIf="!isShowSidebar"></i>
+      <i class="fa-solid fa-xmark" *ngIf="isShowSidebar"></i>
+    </div>
     <router-outlet></router-outlet>
 
   </div>

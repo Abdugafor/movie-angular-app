@@ -117,7 +117,17 @@ hr {
 .bar {
     display: none;
     font-size: 20px;
-    margin-left: 20px;
+    position: absolute;
+    z-index: 1;
+    right: -25px;
+}
+
+
+.sidebarShow {
+    display: block !important;
+    background: #161616;
+    width: 100%;
+    z-index: 1;
 }
 
 @media all and (max-width: 900px) {
@@ -126,9 +136,11 @@ hr {
     }
 
     .content {
+        position: relative;
         margin-left: 0;
         width: 100%;
     }
+
     .bar {
         display: block;
     }

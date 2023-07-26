@@ -83,13 +83,21 @@ a {
         font-size: 11px ;
     }
 
-    i {
-        left: 11px !important;
-        top: 10px !important;
-    }
+   .search {
+        i {
+            left: 11px !important;
+            top: 8px !important;
+        }
+   }
 
     .left-side {
         gap: 15px  !important;
+    }
+
+    .right-side {
+        i {
+            font-size: 14px !important  ;
+        }
     }
 
 }
