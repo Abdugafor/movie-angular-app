@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
 
 @Component({
@@ -11,7 +12,10 @@ export class BigMovieComponent {
   @Input() movie: any = []
   moviePoster: any = ''
 
-  constructor (private httpService: HttpService) {}
+  constructor (private httpService: HttpService, private router: Router) {}
 
+  onNavigate(movieId: string) {
+    this.router.navigate(['browse', movieId])
+  }
 
 }

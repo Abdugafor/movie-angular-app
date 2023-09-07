@@ -8,4 +8,8 @@ import { Component, Input } from '@angular/core';
 
 export class PartiesComponent {
   @Input() parties: any = []
+
+  onALert() {
+    alert('Parties is on development :). See popular movies below')
+  }
 }

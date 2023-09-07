@@ -5,7 +5,7 @@
     </div>
 
     <div class="parties">
-        <div class="party-card" *ngFor="let partie of parties">
+        <div class="party-card" *ngFor="let partie of parties" (click)="onALert()">
             <div class="top-block">
                 <img src="http://image.tmdb.org/t/p/w500/{{partie.poster_path}}" alt="">
 
