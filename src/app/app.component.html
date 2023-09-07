@@ -18,6 +18,7 @@
         
         <li><a [routerLink]="['watchlist']" routerLinkActive="active" ><i class="fa-regular fa-heart"></i> Watchlist</a></li>
         <li><a [routerLink]="['comingsoon']" routerLinkActive="active" ><i class="fa-regular fa-calendar-days"></i> Coming soon</a></li>
+        <li><a [routerLink]="['search', 'the']" [queryParams]="{ page: currentPage }" routerLinkActive="active" ><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
       </ul>    
     </div>
    </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Auth, User, user } from '@angular/fire/auth';
 import { Observable, Subscription } from 'rxjs'
@@ -18,14 +18,24 @@ export class AppComponent implements OnInit {
   user$ = user(this.auth)
   isLogedIn: User | null
 
+  currentPage
+  searchTerm = 'Sea'
+
   constructor (
     private httpService: HttpService, 
     private databaseService: DatabaseService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
     ) {
       this.user$.subscribe((aUser: User | null) => {
         this.isLogedIn = aUser
       })
+     this.activatedRoute.queryParams.subscribe(params => {
+      // Update the component variables with the current URL parameters
+      this.searchTerm = params['searchTerm'];
+      this.currentPage = +params['page']; // Convert to a number if necessary
+    });
+
     }
 
   ngOnInit(): void {

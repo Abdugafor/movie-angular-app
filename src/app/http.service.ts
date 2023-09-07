@@ -20,5 +20,9 @@ export class HttpService {
     return this.getData('https://api.themoviedb.org/3/movie/popular' + '?page=' + pageNumber)
   }
 
+  public searchMovie(movieName: string) {
+    return this.getData('https://api.themoviedb.org/3/search/movie?query=' + movieName + '&language=en-US&page=1')
+  }
+
  
 }

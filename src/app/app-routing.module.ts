@@ -8,6 +8,7 @@ import { LoginComponent } from './modules/authorization/login/login.component';
 import { SignupComponent } from './modules/authorization/signup/signup.component';
 import { UserProfileComponent } from './modules/user-profile/user-profile.component';
 import { userProfileGuard } from './modules/user-profile/user-profile.guard';
+import { SearchComponent } from './modules/search/search.component';
 
 const routes: Routes = [
   {path: '', component: BrowseComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'comingsoon', component: ComingsoonComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'profile', component: UserProfileComponent, canActivate: [userProfileGuard]}
+  {path: 'search/:id', component: SearchComponent},
+  {path: 'profile', component: UserProfileComponent, canActivate: [userProfileGuard]},
 ];
 
 @NgModule({

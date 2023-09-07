@@ -30,6 +30,9 @@ import { MovieInfoCardComponent } from './components/movie-info-card/movie-info-
 import { LoginComponent } from './modules/authorization/login/login.component';
 import { SignupComponent } from './modules/authorization/signup/signup.component';
 import { UserProfileComponent } from './modules/user-profile/user-profile.component';
+import { SearchComponent } from './modules/search/search.component';
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomRouteReuseStrategy } from './utils/routerReuse';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,7 @@ import { UserProfileComponent } from './modules/user-profile/user-profile.compon
     LoginComponent,
     SignupComponent,
     UserProfileComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,9 @@ import { UserProfileComponent } from './modules/user-profile/user-profile.compon
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
   ],
-  providers: [],
+  providers: [
+    {provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

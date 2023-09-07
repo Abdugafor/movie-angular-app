@@ -6,15 +6,13 @@
         </div>
 
         <div class="search">
-            <input type="text" placeholder="Search movie...">
+            <input type="text" placeholder="Search movie..." (keyup.enter)="onSearch(input.value)" #input>
 
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
     </div>
 
     <div class="right-side">
-        <i class="fa-regular fa-comment-dots fa-flip-horizontal"></i>
-        <i class="fa-regular fa-bell"></i>
         <a (click)="onNavigateUser()"><i class="fa-solid fa-user"></i></a>
     </div>
 </div>
