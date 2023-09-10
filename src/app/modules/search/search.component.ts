@@ -1,5 +1,5 @@
 import { Component , OnInit} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
 
 @Component({
@@ -12,14 +12,33 @@ export class SearchComponent implements OnInit{
   movies
   subscribe
 
-  constructor (private activatedRoute: ActivatedRoute, private HttpService: HttpService) {
+  isLoading = true
+  isError = true
+
+  constructor (
+    private activatedRoute: ActivatedRoute, 
+    private HttpService: HttpService,
+    private router: Router
+    ) {
     this.subscribe = this.activatedRoute.params.subscribe(
       (params: any) => this.movieName = params['id']
     )
   }
 
   ngOnInit(): void {
-   this.HttpService.searchMovie(this.movieName).subscribe((res: any) => this.movies  = res.results)
+   this.HttpService.searchMovie(this.movieName).subscribe({
+    next: (res: any) => this.movies  = res.results,
+    error: () => {
+      this.isError = true
+      this.isLoading = false
+    },
+    complete: () => {
+      this.isLoading = false
+    }
+   })
   }
 
+  onNavigate(id: number) {
+    this.router.navigate(['browse', id])
+  }
 }

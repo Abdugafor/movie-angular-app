@@ -11,9 +11,16 @@ import { HttpService } from 'src/app/http.service';
 })
 export class MovieInfoComponent implements OnDestroy, OnInit{
   id
-  movie
   subscribe: Subscription;
   isFavorite = false
+  
+  movie: any = {
+    runtime: 0,
+    budget: 0,
+    vote_average: 0,
+    vote_count: 0,
+    production_companies: []
+  }
 
   constructor(
       private activatedRoute: ActivatedRoute, 
@@ -27,7 +34,10 @@ export class MovieInfoComponent implements OnDestroy, OnInit{
 
   ngOnInit(): void {
     this.httpService.getData('https://api.themoviedb.org/3/movie/' + this.id)
-    .subscribe(res => this.movie = res)
+    .subscribe(res => {
+      this.movie = res
+      console.log(res)
+    })
   }
 
   ngOnDestroy(): void {

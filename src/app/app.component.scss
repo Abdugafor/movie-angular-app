@@ -6,6 +6,8 @@ $padd50: 50px;
     display: flex;
 }
 
+
+
 .sidebar {
     @include dflex(column, space-between);
     position: fixed;
@@ -22,8 +24,14 @@ $padd50: 50px;
         gap: 30px;
         
         h1 {
-            font-weight: 500;
             padding: 0 $padd50;
+
+            a {
+                text-decoration: none;
+                font-weight: 500;
+                color: white;
+            }
+
             span {
                 color: var(--red);
             }
@@ -70,7 +78,7 @@ $padd50: 50px;
         content: "";
         display: inline-block;
         width: 5px;
-        height: 30px;
+        height: 21px;
         margin-right: 45px;
         background: red;
         border-top-right-radius: 5px;

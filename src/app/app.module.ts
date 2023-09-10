@@ -33,6 +33,7 @@ import { UserProfileComponent } from './modules/user-profile/user-profile.compon
 import { SearchComponent } from './modules/search/search.component';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomRouteReuseStrategy } from './utils/routerReuse';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { CustomRouteReuseStrategy } from './utils/routerReuse';
     SignupComponent,
     UserProfileComponent,
     SearchComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
