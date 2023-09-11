@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit{
   subscribe
 
   isLoading = true
-  isError = true
+  isError = false
 
   constructor (
     private activatedRoute: ActivatedRoute, 
