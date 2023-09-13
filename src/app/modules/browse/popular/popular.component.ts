@@ -1,8 +1,8 @@
 import { Component, Input} from '@angular/core';
 import {  Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AppService } from 'src/app/app.service';
-import { HttpService } from 'src/app/http.service';
+import { AppService } from 'src/app/services/app.service';
+import { HttpService } from 'src/app/services/http.service';
 
 
 

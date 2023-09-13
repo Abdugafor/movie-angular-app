@@ -1,6 +1,6 @@
 import { Component , OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpService } from 'src/app/http.service';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-search',
@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit{
   isLoading = true
   isError = false
 
+  
   constructor (
     private activatedRoute: ActivatedRoute, 
     private HttpService: HttpService,
@@ -41,4 +42,5 @@ export class SearchComponent implements OnInit{
   onNavigate(id: number) {
     this.router.navigate(['browse', id])
   }
+
 }

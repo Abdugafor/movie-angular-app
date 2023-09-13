@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Auth, User, user } from '@angular/fire/auth';
 import { Observable, Subscription } from 'rxjs'
 
-import { DatabaseService } from 'src/app/database.service';
-import { HttpService } from 'src/app/http.service';
+import { DatabaseService } from 'src/app/services/database.service';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-header',

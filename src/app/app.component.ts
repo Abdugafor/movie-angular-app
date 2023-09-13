@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Auth, User, user } from '@angular/fire/auth';
 import { Observable, Subscription } from 'rxjs'
 
-import { DatabaseService } from './database.service';
-import { HttpService } from './http.service';
+import { DatabaseService } from './services/database.service';
+import { HttpService } from './services/http.service';
 
 @Component({
   selector: 'app-root',

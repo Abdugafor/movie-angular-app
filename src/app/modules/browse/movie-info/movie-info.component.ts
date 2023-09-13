@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { AppService } from 'src/app/app.service';
-import { HttpService } from 'src/app/http.service';
+import { AppService } from 'src/app/services/app.service';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-movie-info',
