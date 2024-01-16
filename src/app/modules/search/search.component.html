@@ -11,4 +11,8 @@
 
 </div>
 
+<div *ngIf="isEmpty" class="empty"> 
+    <h1>No movies found :(</h1>
+</div>
+
 <app-error *ngIf="isError"></app-error>

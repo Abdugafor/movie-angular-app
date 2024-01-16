@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit{
 
   isLoading = true
   isError = false
+  isEmpty = false
 
   
   constructor (
@@ -28,10 +29,18 @@ export class SearchComponent implements OnInit{
 
   ngOnInit(): void {
    this.HttpService.searchMovie(this.movieName).subscribe({
-    next: (res: any) => this.movies  = res.results,
-    error: () => {
+    next: (res: any) => {
+      if (res.results.length === 0) {
+        this.isEmpty = true
+      }
+
+      this.movies  = res.results
+
+    },
+    error: err => {
       this.isError = true
       this.isLoading = false
+      console.log(err)
     },
     complete: () => {
       this.isLoading = false
