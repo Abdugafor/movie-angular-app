@@ -1,13 +1,14 @@
-import { Component , OnInit} from '@angular/core';
+import { Component , OnDestroy, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
+import { RouteService } from 'src/app/services/route.service';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit{
+export class SearchComponent implements OnInit, OnDestroy{
   movieName
   movies
   subscribe
@@ -20,7 +21,8 @@ export class SearchComponent implements OnInit{
   constructor (
     private activatedRoute: ActivatedRoute, 
     private HttpService: HttpService,
-    private router: Router
+    private router: Router,
+    private routeService: RouteService
     ) {
     this.subscribe = this.activatedRoute.params.subscribe(
       (params: any) => this.movieName = params['id']
@@ -46,6 +48,10 @@ export class SearchComponent implements OnInit{
       this.isLoading = false
     }
    })
+  }
+
+  ngOnDestroy(): void {
+    this.routeService.setPreviousRoute('/search')
   }
 
   onNavigate(id: number) {

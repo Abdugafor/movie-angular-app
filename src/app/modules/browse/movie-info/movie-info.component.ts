@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { AppService } from 'src/app/services/app.service';
 import { HttpService } from 'src/app/services/http.service';
+import { RouteService } from 'src/app/services/route.service';
 
 @Component({
   selector: 'app-movie-info',
@@ -25,7 +26,8 @@ export class MovieInfoComponent implements OnDestroy, OnInit{
   constructor(
       private activatedRoute: ActivatedRoute, 
       private httpService: HttpService,
-      private appService: AppService
+      private appService: AppService,
+      private routeService: RouteService
     ) {
     this.subscribe = activatedRoute.params.subscribe(
       (params: any) => this.id = params['id']
@@ -42,6 +44,7 @@ export class MovieInfoComponent implements OnDestroy, OnInit{
 
   ngOnDestroy(): void {
     this.subscribe.unsubscribe()
+    this.routeService.setPreviousRoute('/browse/' + this.movie.id )
   }
 
   onClickFavoriteMovie() {

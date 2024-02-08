@@ -5,6 +5,7 @@ import { Observable, Subscription } from 'rxjs'
 
 import { DatabaseService } from 'src/app/services/database.service';
 import { HttpService } from 'src/app/services/http.service';
+import { RouteService } from 'src/app/services/route.service';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,12 @@ export class HeaderComponent implements OnDestroy{
   user$ = user(this.auth)
   userSubscription: Subscription
 
-  constructor (private router: Router, private databaseService: DatabaseService, private httpSevice: HttpService) {
+  constructor (
+    private router: Router, 
+    private databaseService: DatabaseService, 
+    private httpSevice: HttpService,
+    private routeService: RouteService
+    ) {
     this.userSubscription = this.user$.subscribe((aUser: User | null) => {
       this.userState = aUser
     })
@@ -37,7 +43,9 @@ export class HeaderComponent implements OnDestroy{
   }
 
   onNavigateBack() {
-    this.router.navigate(['../'])
+    const prvRoute = this.routeService.getPreviousRoute()
+    console.log(prvRoute)
+    this.router.navigate([prvRoute])
   }
 
   onSearch(movieName: string) {

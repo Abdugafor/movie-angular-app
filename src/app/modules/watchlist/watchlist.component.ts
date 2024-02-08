@@ -1,19 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
+import { RouteService } from 'src/app/services/route.service';
 
 @Component({
   selector: 'app-watchlist',
   templateUrl: './watchlist.component.html',
   styleUrls: ['./watchlist.component.scss']
 })
-export class WatchlistComponent implements OnInit {
+export class WatchlistComponent implements OnInit , OnDestroy{
   watchedMovies
   favoriteMovies: any[] = []
 
-  constructor(private appService: AppService) {}
+  constructor(private appService: AppService, private routeService: RouteService) {}
 
   ngOnInit(): void {
     this.onRefresh()
+  }
+
+  ngOnDestroy(): void {
+    this.routeService.setPreviousRoute('/watchlist')
   }
 
   public onRemoveFavorite(movieId: number): void {
