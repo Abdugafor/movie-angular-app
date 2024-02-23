@@ -1,9 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { AppService } from 'src/app/services/app.service';
 import { HttpService } from 'src/app/services/http.service';
 import { RouteService } from 'src/app/services/route.service';
+import { AppState } from 'src/app/store';
+import { BrowseActions } from 'src/app/store/action/browse.actions';
 
 @Component({
   selector: 'app-movie-info',
@@ -27,7 +30,8 @@ export class MovieInfoComponent implements OnDestroy, OnInit{
       private activatedRoute: ActivatedRoute, 
       private httpService: HttpService,
       private appService: AppService,
-      private routeService: RouteService
+      private routeService: RouteService,
+      private store: Store<AppState>
     ) {
     this.subscribe = activatedRoute.params.subscribe(
       (params: any) => this.id = params['id']
@@ -52,6 +56,11 @@ export class MovieInfoComponent implements OnDestroy, OnInit{
 
    if (this.isFavorite) {
     this.appService.addFavoriteMovie(this.movie)
+    this.store.dispatch(BrowseActions.addFavoriteMovie({movie: this.movie}))
+   }
+
+   if(!this.isFavorite) {
+    this.store.dispatch(BrowseActions.removeFavoriteMovie({movieId: this.movie.id}))
    }
   }
 }

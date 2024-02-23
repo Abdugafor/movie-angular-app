@@ -28,8 +28,11 @@ export class BrowseComponent implements OnInit , OnDestroy{
         this.parties = this.movies.splice(0, 4)
         this.bigMovie = this.movies[this.RandomMovie()]
         this.isShowLoader = false
+        // console.log(this.movies)
       }
     })
+
+    this.httpService.getData('https://api.themoviedb.org/3/movie/787699').subscribe({next: (res: any) => console.log(res)})
   }
 
   ngOnDestroy(): void {
