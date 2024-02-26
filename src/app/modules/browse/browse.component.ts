@@ -32,7 +32,6 @@ export class BrowseComponent implements OnInit , OnDestroy{
       }
     })
 
-    this.httpService.getData('https://api.themoviedb.org/3/movie/787699').subscribe({next: (res: any) => console.log(res)})
   }
 
   ngOnDestroy(): void {
