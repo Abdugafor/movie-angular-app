@@ -38,7 +38,6 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import * as fromBrowse from './store/reducer/browse.reducer';
-import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({

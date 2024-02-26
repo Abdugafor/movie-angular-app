@@ -6,15 +6,19 @@ import { state } from '@angular/animations';
 export const browseFeatureKey = 'browse';
 
 export interface State {
-  LikedMovies: Movie[]
+  LikedMovies: Movie[],
+  WatchedMovies: Movie[]
 }
 
 export const initialState: State = {
-  LikedMovies: []
+  LikedMovies: [],
+  WatchedMovies: []
 };
 
 export const reducer = createReducer(
   initialState,
+  //  Add and Delete favorite movies
+
   on(BrowseActions.addFavoriteMovie, (state, action) => {
     return {
       ...state,
@@ -25,6 +29,21 @@ export const reducer = createReducer(
     return {
       ...state,
       LikedMovies: [...state.LikedMovies].filter(movie => movie.id !== action.movieId)
+    }
+  }),
+
+  //  Add and Delete watched movies
+
+  on(BrowseActions.addWatchedMovie, (state, action) => {
+    return {
+      ...state,
+      WatchedMovies: [...state.WatchedMovies, action.movie]
+    }
+  }),
+  on(BrowseActions.removeWatchedMovie, (state, action) => {
+    return {
+      ...state,
+      WatchedMovies: [...state.WatchedMovies].filter(movie => movie.id !== action.movieId)
     }
   })
 );
