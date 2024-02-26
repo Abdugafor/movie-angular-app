@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Movie } from 'src/app/models/interfaces/movies.interface';
@@ -13,6 +14,7 @@ import { selectLikedMovies } from 'src/app/store/selectors/browse.selectors';
   templateUrl: './watchlist.component.html',
   styleUrls: ['./watchlist.component.scss']
 })
+
 export class WatchlistComponent implements OnInit , OnDestroy{
   watchedMovies
   favoriteMovies: Observable<Movie[]>
@@ -20,7 +22,8 @@ export class WatchlistComponent implements OnInit , OnDestroy{
   constructor(
     private appService: AppService, 
     private routeService: RouteService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
     ) {}
 
   ngOnInit(): void {
@@ -37,9 +40,14 @@ export class WatchlistComponent implements OnInit , OnDestroy{
     this.onRefresh()
   }
 
- public onRemoveWatched(movieId: number):void {
+  public onRemoveWatched(movieId: number):void {
     this.appService.removeWatchedMovie(movieId)
+    this.onRefresh()
   }
+
+  public onNavigate(movieId: number) {
+    this.router.navigate(['browse', movieId])
+  } 
 
   private onRefresh() {
     this.watchedMovies = this.appService.getWatchedMovies()
