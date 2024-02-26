@@ -3,11 +3,10 @@ import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Movie } from 'src/app/models/interfaces/movies.interface';
-import { AppService } from 'src/app/services/app.service';
 import { RouteService } from 'src/app/services/route.service';
 import { AppState } from 'src/app/store';
 import { BrowseActions } from 'src/app/store/action/browse.actions';
-import { selectLikedMovies } from 'src/app/store/selectors/browse.selectors';
+import { selectLikedMovies, selectWatchedMovies } from 'src/app/store/selectors/browse.selectors';
 
 @Component({
   selector: 'app-watchlist',
@@ -16,19 +15,18 @@ import { selectLikedMovies } from 'src/app/store/selectors/browse.selectors';
 })
 
 export class WatchlistComponent implements OnInit , OnDestroy{
-  watchedMovies
+  watchedMovies: Observable<Movie[]>
   favoriteMovies: Observable<Movie[]>
 
   constructor(
-    private appService: AppService, 
     private routeService: RouteService,
     private store: Store<AppState>,
     private router: Router
     ) {}
 
   ngOnInit(): void {
-    this.onRefresh()
     this.favoriteMovies = this.store.pipe(select(selectLikedMovies))
+    this.watchedMovies = this.store.pipe(select(selectWatchedMovies))
   }
 
   ngOnDestroy(): void {
@@ -37,19 +35,14 @@ export class WatchlistComponent implements OnInit , OnDestroy{
 
   public onRemoveFavorite(movieId: number): void {
     this.store.dispatch(BrowseActions.removeFavoriteMovie({movieId: movieId}))
-    this.onRefresh()
   }
 
   public onRemoveWatched(movieId: number):void {
-    this.appService.removeWatchedMovie(movieId)
-    this.onRefresh()
+    this.store.dispatch(BrowseActions.removeWatchedMovie({movieId: movieId}))
   }
 
   public onNavigate(movieId: number) {
     this.router.navigate(['browse', movieId])
   } 
 
-  private onRefresh() {
-    this.watchedMovies = this.appService.getWatchedMovies()
-  }
 }

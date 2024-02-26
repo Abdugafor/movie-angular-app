@@ -1,8 +1,9 @@
 import { Component, Input} from '@angular/core';
 import {  Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { AppService } from 'src/app/services/app.service';
+import { Store } from '@ngrx/store';
 import { HttpService } from 'src/app/services/http.service';
+import { AppState } from 'src/app/store';
+import { BrowseActions } from 'src/app/store/action/browse.actions';
 
 
 
@@ -22,7 +23,7 @@ export class PopularComponent{
   constructor(
       private httpService: HttpService, 
       private router: Router,
-      private appService: AppService
+      private store: Store<AppState>
     ) {}
   
   onLoadMore() {
@@ -46,7 +47,7 @@ export class PopularComponent{
   onNavigate(movieId: number) {
     const movie = this.movies.filter(item => item.id === movieId)[0]
     
-    this.appService.addWatchedMovie(movie)
+    this.store.dispatch(BrowseActions.addWatchedMovie({movie: movie}))
     this.router.navigate(['browse', movieId])
   }
 

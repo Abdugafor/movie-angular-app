@@ -9,3 +9,8 @@ export const selectLikedMovies = createSelector(
     selectMovieFeature,
     (state: State) => state.LikedMovies
 )
+
+export const selectWatchedMovies = createSelector(
+    selectMovieFeature,
+    (state: State) => state.WatchedMovies
+)

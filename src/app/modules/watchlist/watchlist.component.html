@@ -8,14 +8,14 @@
         <div class="container">
             <div 
                 class="card watchlist-card" 
-                *ngFor="let movie of watchedMovies" 
+                *ngFor="let movie of watchedMovies | async" 
                 (click)="onNavigate(movie.id)"
                 >
-                <img src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt="">
+                <img src="https://image.tmdb.org/t/p/original/{{movie['backdrop_path']}}" alt="">
     
                 <div class="bg-filter"></div>
 
-                <h1>{{movie.title}}</h1>
+                <h1>{{movie['title']}}</h1>
 
                 <div class="delete icon-btn" (click)="onRemoveWatched(movie.id)">
                     <i class="fa-regular fa-trash-can"></i>
@@ -24,7 +24,7 @@
     
         </div>
 
-        <div class="card noItem" *ngIf="watchedMovies.length === 0">
+        <div class="card noItem" *ngIf="(watchedMovies | async)?.length === 0">
             <div class="center">
                 <i class="fa-regular fa-trash-can"></i>
                 <h4>No movie yet</h4>

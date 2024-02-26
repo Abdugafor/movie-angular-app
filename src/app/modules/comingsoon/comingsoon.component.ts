@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppService } from 'src/app/services/app.service';
+import { Store } from '@ngrx/store';
 import { HttpService } from 'src/app/services/http.service';
 import { RouteService } from 'src/app/services/route.service';
+import { AppState } from 'src/app/store';
+import { BrowseActions } from 'src/app/store/action/browse.actions';
 
 @Component({
   selector: 'app-comingsoon',
@@ -16,7 +18,7 @@ export class ComingsoonComponent implements OnInit , OnDestroy{
   constructor (
     private httpService: HttpService, 
     private router: Router,
-    private appService: AppService,
+    private store: Store<AppState>,
     private routeService: RouteService
   ) {}
 
@@ -40,7 +42,7 @@ export class ComingsoonComponent implements OnInit , OnDestroy{
   onNavigate(movieId: number): void {
     const movie = this.movies.filter(item => item.id === movieId)[0]
 
-    this.appService.addWatchedMovie(movie)
+    this.store.dispatch(BrowseActions.addWatchedMovie({movie: movie}))
     this.router.navigate(['browse', movieId])
   }
 }
