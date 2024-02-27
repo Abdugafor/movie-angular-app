@@ -40,24 +40,5 @@ export class DatabaseService {
     this.auth.signOut()
   }
 
-  // public uploadImage(userUID, img) {
-  //   const imageRef = ref(this.storage, userUID)
-
-  //    uploadBytes(imageRef, img).then((snapshot) => {
-  //       getDownloadURL(imageRef).then((url) => {
-  //         setDoc(doc(this.firestore, 'Users', userUID), {
-  //           photoURL: url
-  //         })
-  //       })
-  //       .catch(err => {
-  //         console.log(err, 'while export image')
-  //       })
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-
-   
-  // }
 
 }

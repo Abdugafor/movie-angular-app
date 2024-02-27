@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { AppService } from 'src/app/services/app.service';
+import { Store } from '@ngrx/store';
+import {  Subscription } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
+import { RouteService } from 'src/app/services/route.service';
+import { AppState } from 'src/app/store';
+import { BrowseActions } from 'src/app/store/action/browse.actions';
 
 @Component({
   selector: 'app-movie-info',
@@ -25,7 +28,8 @@ export class MovieInfoComponent implements OnDestroy, OnInit{
   constructor(
       private activatedRoute: ActivatedRoute, 
       private httpService: HttpService,
-      private appService: AppService
+      private routeService: RouteService,
+      private store: Store<AppState>
     ) {
     this.subscribe = activatedRoute.params.subscribe(
       (params: any) => this.id = params['id']
@@ -36,19 +40,23 @@ export class MovieInfoComponent implements OnDestroy, OnInit{
     this.httpService.getData('https://api.themoviedb.org/3/movie/' + this.id)
     .subscribe(res => {
       this.movie = res
-      console.log(res)
     })
   }
 
   ngOnDestroy(): void {
     this.subscribe.unsubscribe()
+    this.routeService.setPreviousRoute('/browse/' + this.movie.id )
   }
 
   onClickFavoriteMovie() {
     this.isFavorite = !this.isFavorite
 
    if (this.isFavorite) {
-    this.appService.addFavoriteMovie(this.movie)
+    this.store.dispatch(BrowseActions.addFavoriteMovie({movie: this.movie}))
+   }
+
+   if(!this.isFavorite) {
+    this.store.dispatch(BrowseActions.removeFavoriteMovie({movieId: this.movie.id}))
    }
   }
 }

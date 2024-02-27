@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -34,6 +34,11 @@ import { SearchComponent } from './modules/search/search.component';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomRouteReuseStrategy } from './utils/routerReuse';
 import { ErrorComponent } from './components/error/error.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import * as fromBrowse from './store/reducer/browse.reducer';
+
 
 @NgModule({
   declarations: [
@@ -67,6 +72,9 @@ import { ErrorComponent } from './components/error/error.component';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forFeature(fromBrowse.browseFeatureKey, fromBrowse.reducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [
     {provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}
