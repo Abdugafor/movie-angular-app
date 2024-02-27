@@ -28,7 +28,6 @@ export class BrowseComponent implements OnInit , OnDestroy{
         this.parties = this.movies.splice(0, 4)
         this.bigMovie = this.movies[this.RandomMovie()]
         this.isShowLoader = false
-        // console.log(this.movies)
       }
     })
 
