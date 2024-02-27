@@ -15,14 +15,22 @@ export const initialState: State = {
   WatchedMovies: []
 };
 
+
 export const reducer = createReducer(
   initialState,
   //  Add and Delete favorite movies
 
   on(BrowseActions.addFavoriteMovie, (state, action) => {
+
+    if (!isAdded(state.LikedMovies, action.movie)) {
+      return {
+        ...state,
+        LikedMovies: [...state.LikedMovies, action.movie]
+      }
+    }
+  
     return {
       ...state,
-      LikedMovies: [...state.LikedMovies, action.movie]
     }
   }),
   on(BrowseActions.removeFavoriteMovie, (state, action) => {
@@ -35,16 +43,39 @@ export const reducer = createReducer(
   //  Add and Delete watched movies
 
   on(BrowseActions.addWatchedMovie, (state, action) => {
+
+    if (!isAdded(state.WatchedMovies, action.movie)) {
+      return {
+        ...state,
+        WatchedMovies: [action.movie, ...state.WatchedMovies, ]
+      }
+    }
+
+    const movieIndex = state.WatchedMovies.findIndex(movie => movie.id === action.movie.id)
+    const updatedMovies = [...state.WatchedMovies];
+    updatedMovies.splice(movieIndex, 1);
+
+    console.log(updatedMovies)
     return {
       ...state,
-      WatchedMovies: [...state.WatchedMovies, action.movie]
+      WatchedMovies: [action.movie, ...updatedMovies]
     }
   }),
   on(BrowseActions.removeWatchedMovie, (state, action) => {
+    
     return {
       ...state,
       WatchedMovies: [...state.WatchedMovies].filter(movie => movie.id !== action.movieId)
     }
   })
 );
+
+function isAdded(arr: Movie[], movie: Movie): boolean {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].id === movie.id) {
+      return true
+    }
+  }
+  return false
+}
 
