@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Movie } from 'src/app/models/interfaces/movies.interface';
 import { HttpService } from 'src/app/services/http.service';
 import { RouteService } from 'src/app/services/route.service';
 import { AppState } from 'src/app/store';
-import { BrowseActions } from 'src/app/store/action/browse.actions';
+import { WatchlistActions } from 'src/app/store/action/watchlist.actions';
 
 @Component({
   selector: 'app-comingsoon',
@@ -17,7 +17,6 @@ export class ComingsoonComponent implements OnInit , OnDestroy{
 
   constructor (
     private httpService: HttpService, 
-    private router: Router,
     private store: Store<AppState>,
     private routeService: RouteService
   ) {}
@@ -39,10 +38,8 @@ export class ComingsoonComponent implements OnInit , OnDestroy{
     this.routeService.setPreviousRoute('/comingsoon')
   }
 
-  onNavigate(movieId: number): void {
-    const movie = this.movies.filter(item => item.id === movieId)[0]
+  onNavigate(movie: Movie): void {
 
-    this.store.dispatch(BrowseActions.addWatchedMovie({movie: movie}))
-    this.router.navigate(['browse', movieId])
+    this.routeService.navigate(movie)
   }
 }

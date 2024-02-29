@@ -1,9 +1,9 @@
 import { Component, Input} from '@angular/core';
-import {  Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Movie } from 'src/app/models/interfaces/movies.interface';
 import { HttpService } from 'src/app/services/http.service';
+import { RouteService } from 'src/app/services/route.service';
 import { AppState } from 'src/app/store';
-import { BrowseActions } from 'src/app/store/action/browse.actions';
 
 
 
@@ -22,7 +22,7 @@ export class PopularComponent{
 
   constructor(
       private httpService: HttpService, 
-      private router: Router,
+      private routeService: RouteService,
       private store: Store<AppState>
     ) {}
   
@@ -44,11 +44,8 @@ export class PopularComponent{
   }
 
 
-  onNavigate(movieId: number) {
-    const movie = this.movies.filter(item => item.id === movieId)[0]
-    
-    this.store.dispatch(BrowseActions.addWatchedMovie({movie: movie}))
-    this.router.navigate(['browse', movieId])
+  onNavigate(movie: Movie) {
+    this.routeService.navigate(movie)
   }
 
 } 

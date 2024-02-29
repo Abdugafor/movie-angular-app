@@ -37,7 +37,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import * as fromBrowse from './store/reducer/browse.reducer';
+import * as fromBrowse from './store/reducer/watchlist.reducer';
 
 
 @NgModule({
@@ -73,7 +73,7 @@ import * as fromBrowse from './store/reducer/browse.reducer';
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     StoreModule.forRoot(reducers, { metaReducers }),
-    StoreModule.forFeature(fromBrowse.browseFeatureKey, fromBrowse.reducer),
+    StoreModule.forFeature(fromBrowse.watchlistFeatureKey, fromBrowse.reducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [
