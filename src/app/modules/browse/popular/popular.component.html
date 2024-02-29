@@ -10,7 +10,7 @@
         <div class="grid">
             <app-card 
                 *ngFor="let movie of movies" 
-                (click)="onNavigate(movie.id)"
+                (click)="onNavigate(movie)"
                 [movie]="movie"
             >
                 <img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="">

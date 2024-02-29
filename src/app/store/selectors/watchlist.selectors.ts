@@ -1,8 +1,8 @@
 import {  createFeatureSelector, createSelector } from '@ngrx/store';
-import { State, browseFeatureKey } from '../reducer/browse.reducer';
+import { State, watchlistFeatureKey } from '../reducer/watchlist.reducer';
 
 export const selectMovieFeature = createFeatureSelector<State>(
-    browseFeatureKey
+    watchlistFeatureKey
 )
 
 export const selectLikedMovies = createSelector(

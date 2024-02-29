@@ -1,5 +1,6 @@
 import { Component , OnDestroy, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Movie } from 'src/app/models/interfaces/movies.interface';
 import { HttpService } from 'src/app/services/http.service';
 import { RouteService } from 'src/app/services/route.service';
 
@@ -21,7 +22,6 @@ export class SearchComponent implements OnInit, OnDestroy{
   constructor (
     private activatedRoute: ActivatedRoute, 
     private HttpService: HttpService,
-    private router: Router,
     private routeService: RouteService
     ) {
     this.subscribe = this.activatedRoute.params.subscribe(
@@ -54,8 +54,8 @@ export class SearchComponent implements OnInit, OnDestroy{
     this.routeService.setPreviousRoute('/search')
   }
 
-  onNavigate(id: number) {
-    this.router.navigate(['browse', id])
+  onNavigate(movie: Movie) {
+    this.routeService.navigate(movie)
   }
 
 }

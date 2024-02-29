@@ -5,7 +5,7 @@ import {  Subscription } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
 import { RouteService } from 'src/app/services/route.service';
 import { AppState } from 'src/app/store';
-import { BrowseActions } from 'src/app/store/action/browse.actions';
+import { WatchlistActions } from 'src/app/store/action/watchlist.actions';
 
 @Component({
   selector: 'app-movie-info',
@@ -52,11 +52,11 @@ export class MovieInfoComponent implements OnDestroy, OnInit{
     this.isFavorite = !this.isFavorite
 
    if (this.isFavorite) {
-    this.store.dispatch(BrowseActions.addFavoriteMovie({movie: this.movie}))
+    this.store.dispatch(WatchlistActions.addFavoriteMovie({movie: this.movie}))
    }
 
    if(!this.isFavorite) {
-    this.store.dispatch(BrowseActions.removeFavoriteMovie({movieId: this.movie.id}))
+    this.store.dispatch(WatchlistActions.removeFavoriteMovie({movieId: this.movie.id}))
    }
   }
 }

@@ -9,7 +9,7 @@
             <div 
                 class="card watchlist-card" 
                 *ngFor="let movie of watchedMovies | async" 
-                (click)="onNavigate(movie.id)"
+                (click)="onNavigate(movie)"
                 >
                 <img src="https://image.tmdb.org/t/p/original/{{movie['backdrop_path']}}" alt="">
     
@@ -40,7 +40,7 @@
         </div>
 
         <div class="container">
-            <div class="card watchlist-card favorite" *ngFor="let movie of favoriteMovies | async"  (click)="onNavigate(movie.id)">
+            <div class="card watchlist-card favorite" *ngFor="let movie of favoriteMovies | async"  (click)="onNavigate(movie)">
                 <img src="https://image.tmdb.org/t/p/original/{{movie['backdrop_path']}}" alt="">
     
                 <div class="bg-filter"></div>

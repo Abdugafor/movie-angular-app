@@ -7,14 +7,14 @@ import {
   MetaReducer
 } from '@ngrx/store';
 
-import * as fromBrowse from './reducer/browse.reducer'
+import * as fromWatchlist from './reducer/watchlist.reducer'
 
 export interface AppState {
-  [fromBrowse.browseFeatureKey]: fromBrowse.State
+  [fromWatchlist.watchlistFeatureKey]: fromWatchlist.State,
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  [fromBrowse.browseFeatureKey]: fromBrowse.reducer
+  [fromWatchlist.watchlistFeatureKey]: fromWatchlist.reducer,
 };
 
 
