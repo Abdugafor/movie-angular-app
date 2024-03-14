@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { getAuth, signInWithEmailAndPassword  } from "@angular/fire/auth"
+import { Store } from '@ngrx/store';
+import { Observable, from } from 'rxjs';
+import { DatabaseService } from 'src/app/services/database.service';
+import { AppState } from 'src/app/store';
+import { AuthActions } from 'src/app/store/action/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -11,45 +15,27 @@ export class LoginComponent {
   isShowPasswordError = false
   isShowInvalidEmail = false
   isShowUserNotFound = false
-  isShowEmptyField = false
+  isShowEmptyField = false 
 
-  auth = getAuth();
+  constructor (
+    private router: Router, 
+    private databaseServie: DatabaseService,
+    private store: Store<AppState>
+    ) {}
 
-  constructor (private router: Router) {}
-
-  onSubmit(email, password) {
+  onSubmit(email: string, password: string) {
 
     if (email === '' || password === '') {
       this.isShowEmptyField = true
     }else {
-      this.isShowEmptyField = false
-
-      signInWithEmailAndPassword(this.auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-
-          this.router.navigate(['/profile'])
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-  
-          if (errorCode === 'auth/wrong-password') {
-            this.isShowPasswordError = true
-          }else if (errorCode === 'auth/invalid-email') {
-            this.isShowInvalidEmail = true
-            this.isShowUserNotFound = false
-          }else if (errorCode === 'auth/user-not-found') {
-            this.isShowUserNotFound =  true
-            this.isShowInvalidEmail = false
-          }
-        });
-
-        
+      this.isShowEmptyField = false        
     }
+
+    this.store.dispatch((AuthActions.logInUser({email: email, password: password})))
+   
   }
 
   onNavigate() {
     this.router.navigate(['/watchlist'])
-
   }
 }

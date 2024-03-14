@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUserSignUp } from 'src/app/models/interfaces/auth.interface';
 import { DatabaseService } from 'src/app/services/database.service';
 
 
@@ -16,20 +17,19 @@ export class SignupComponent {
   constructor (private router: Router, private database: DatabaseService) {}
   
 
-  onSubmit(username: string, email: string, password: string, secondPassword: string): void {
-    if (password !== '' && secondPassword !== '' && password !== secondPassword) {
+  onSubmit(user: IUserSignUp): void {
+    if (user.password !== user.secondPassword) {
       this.isShowPasswordError = true
     }
     else if (
-      email === '' ||
-      password === '' ||
-      secondPassword === ''
+      user.email === '' ||
+      user.password === '' ||
+      user.secondPassword === ''
     ) {
       this.isShowEmptyFieldError = true
     } 
     else {
-      this.database.signUpUser(username, email, password)
-      this.router.navigate(['/profile'])
+      this.database.signUpUser(user.username, user.email, user.password)
     }
   }
 

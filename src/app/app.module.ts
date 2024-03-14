@@ -4,7 +4,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 
@@ -38,6 +37,9 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import * as fromBrowse from './store/reducer/watchlist.reducer';
+import * as fromAuth from './store/reducer/auth.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './store/effects/auth.effects';
 
 
 @NgModule({
@@ -71,10 +73,11 @@ import * as fromBrowse from './store/reducer/watchlist.reducer';
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage()),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreModule.forFeature(fromBrowse.watchlistFeatureKey, fromBrowse.reducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.reducer),
+    EffectsModule.forRoot([AuthEffects]),
   ],
   providers: [
     {provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}

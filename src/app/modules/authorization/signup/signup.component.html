@@ -46,7 +46,11 @@
         <button 
           class="button-submit" 
           type="button" 
-          (click)="onSubmit(username.value, email.value, pasword.value, repeatPassword.value)"
+          (click)="onSubmit({
+            username: username.value, 
+            email: email.value, 
+            password: pasword.value,  
+            secondPassword: repeatPassword.value})"
         >Sign Up</button>
     
         <p class="p">Have already an accaunt? <a class="span" [routerLink]="['/login']">Log In</a></p>

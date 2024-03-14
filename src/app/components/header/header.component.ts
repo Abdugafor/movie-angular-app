@@ -34,7 +34,6 @@ export class HeaderComponent implements OnDestroy{
   }
 
   onNavigateUser() {
-    console.log(this.userState)
     if (this.userState !== null) {
       this.router.navigate(['profile'])
     }else {
@@ -44,7 +43,6 @@ export class HeaderComponent implements OnDestroy{
 
   onNavigateBack() {
     const prvRoute = this.routeService.getPreviousRoute()
-    console.log(prvRoute)
     this.router.navigate([prvRoute])
   }
 
