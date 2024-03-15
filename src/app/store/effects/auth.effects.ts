@@ -1,21 +1,34 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthActions } from '../action/auth.actions';
-import { catchError,  map, of, switchMap, tap,  } from 'rxjs';
+import { catchError,  map, of, switchMap, tap, timer,  } from 'rxjs';
 import { DatabaseService } from 'src/app/services/database.service';
+import { doc, setDoc , Firestore} from '@angular/fire/firestore';
 
 
 
 @Injectable()
 export class AuthEffects {
-  // signUp$ = createEffect(() => this.actions$.pipe(
-  //   ofType(AuthActions.signUpUser),
-  //   switchMap(action => 
-  //     this.databaseService.signUpUser(action.user.username, action.user.email, action.user.password).pipe(
-  //       map
-  //     )
-  //   )
-  // ))
+  private firestore: Firestore = inject(Firestore)
+
+  signUp$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.signUpUser),
+    switchMap(action => 
+      this.databaseService.signUpUser(action.user.username, action.user.email, action.user.password).pipe(
+        map(userCredential => {
+          const user = userCredential.user;
+        
+          setDoc(doc(this.firestore, 'Users', user.uid), {
+              name: action.user.username,
+              email: action.user.email,
+              photoURL: null
+          })
+          return  AuthActions.signUpSuccess({ user: userCredential})
+        }),
+        catchError(error => of(AuthActions.signUpFail({errorMessage: error.code})))
+      )
+    )
+  ))
 
   login$ = createEffect(() => {
     return this.actions$.pipe(
@@ -23,8 +36,7 @@ export class AuthEffects {
       switchMap(action =>
         this.databaseService.loginUser(action.email, action.password).pipe(
           map(userCredential => AuthActions.logInSuccess({ user: userCredential })),
-          tap(() =>  window.location.reload()),
-          catchError(error => of(AuthActions.logInFail())),
+          catchError(error => of(AuthActions.logInFail({errorMessage: error.code}))),
         )
       )
     )

@@ -41,7 +41,7 @@
             </div>
             <p class="error" *ngIf="isShowPasswordError">! Passwords do not match</p>
             <p class="error" *ngIf="isShowEmptyFieldError">! Please fill empty fields</p>
-            
+            <p class="error" >{{errorMessage | async}}</p>
         
         <button 
           class="button-submit" 

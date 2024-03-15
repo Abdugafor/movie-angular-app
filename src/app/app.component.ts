@@ -14,6 +14,7 @@ import { AuthActions } from './store/action/auth.actions';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent  {
   private auth: Auth = inject(Auth);
   public isShowSidebar = false
@@ -40,6 +41,12 @@ export class AppComponent  {
     });
 
     }
+
+    // ngOnInit(): void {
+    //     if (user !== null) {
+    //       this.store.dispatch(AuthActions.logInSuccess({user: this.isLogedIn}))
+    //     }
+    // }
 
   fetchData() {
     this.httpService.getMovies('1')

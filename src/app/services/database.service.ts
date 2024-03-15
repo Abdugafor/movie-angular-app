@@ -1,5 +1,4 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, setDoc, doc } from '@angular/fire/firestore';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { from } from 'rxjs';
 
@@ -8,29 +7,13 @@ import { from } from 'rxjs';
 })
 
 export class DatabaseService {
-  private auth: Auth = inject(Auth)
-  private firestore: Firestore = inject(Firestore)
+  public auth: Auth = inject(Auth)
 
   constructor() {}
 
   public signUpUser(username, email, password) {
     
-    createUserWithEmailAndPassword(this.auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        
-        setDoc(doc(this.firestore, 'Users', user.uid), {
-            name: username,
-            email: email,
-            photoURL: null
-        })
- 
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        
-        console.log(errorCode)
-      });
+   return from(createUserWithEmailAndPassword(this.auth, email, password))
   }
 
   public loginUser(email: string, password: string) {

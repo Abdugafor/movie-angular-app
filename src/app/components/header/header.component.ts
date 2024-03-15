@@ -1,10 +1,8 @@
 import { Component, OnDestroy , inject} from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth, User, user } from '@angular/fire/auth';
-import { Observable, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
 
-import { DatabaseService } from 'src/app/services/database.service';
-import { HttpService } from 'src/app/services/http.service';
 import { RouteService } from 'src/app/services/route.service';
 
 @Component({
@@ -20,8 +18,6 @@ export class HeaderComponent implements OnDestroy{
 
   constructor (
     private router: Router, 
-    private databaseService: DatabaseService, 
-    private httpSevice: HttpService,
     private routeService: RouteService
     ) {
     this.userSubscription = this.user$.subscribe((aUser: User | null) => {
@@ -34,6 +30,7 @@ export class HeaderComponent implements OnDestroy{
   }
 
   onNavigateUser() {
+
     if (this.userState !== null) {
       this.router.navigate(['profile'])
     }else {

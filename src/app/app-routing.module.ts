@@ -9,14 +9,15 @@ import { SignupComponent } from './modules/authorization/signup/signup.component
 import { UserProfileComponent } from './modules/user-profile/user-profile.component';
 import { userProfileGuard } from './modules/user-profile/user-profile.guard';
 import { SearchComponent } from './modules/search/search.component';
+import { authGuard } from './modules/authorization/auth.guard';
 
 const routes: Routes = [
   {path: '', component: BrowseComponent},
   {path: 'browse/:id', component: MovieInfoComponent},
   {path: 'watchlist', component: WatchlistComponent},
   {path: 'comingsoon', component: ComingsoonComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignupComponent},
+  {path: 'login', component: LoginComponent, },
+  {path: 'signup', component: SignupComponent },
   {path: 'search/:id', component: SearchComponent},
   {path: 'profile', component: UserProfileComponent, canActivate: [userProfileGuard]},
 ];

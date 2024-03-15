@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { IUserSignUp } from 'src/app/models/interfaces/auth.interface';
-import { DatabaseService } from 'src/app/services/database.service';
+import { AppState } from 'src/app/store';
+import { AuthActions } from 'src/app/store/action/auth.actions';
+import { selectSignUpErrorMessage } from 'src/app/store/selectors/auth.selectors';
 
 
 
@@ -10,12 +14,16 @@ import { DatabaseService } from 'src/app/services/database.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit{
+  errorMessage: Observable<string>
   isShowPasswordError = false
   isShowEmptyFieldError = false
 
-  constructor (private router: Router, private database: DatabaseService) {}
+  constructor (private router: Router, private store: Store<AppState>) {}
   
+  ngOnInit(): void {
+    this.errorMessage = this.store.pipe(select(selectSignUpErrorMessage))  
+  }
 
   onSubmit(user: IUserSignUp): void {
     if (user.password !== user.secondPassword) {
@@ -29,11 +37,11 @@ export class SignupComponent {
       this.isShowEmptyFieldError = true
     } 
     else {
-      this.database.signUpUser(user.username, user.email, user.password)
+     this.store.dispatch(AuthActions.signUpUser({user: user}))
     }
   }
 
   onNavigate() {
-    this.router.navigate(['/browse'])
+    this.router.navigate(['/'])
   }
 }

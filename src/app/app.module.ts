@@ -40,6 +40,7 @@ import * as fromBrowse from './store/reducer/watchlist.reducer';
 import * as fromAuth from './store/reducer/auth.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
+import { RouteEffects } from './store/effects/route.effects';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { AuthEffects } from './store/effects/auth.effects';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.reducer),
     EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forFeature([RouteEffects]),
   ],
   providers: [
     {provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}

@@ -19,6 +19,13 @@
         gap: 0 30px; 
         align-items: center;
     }
+
+    .watched {
+        .bg-filter {
+            background: rgb(0,212,255);
+            background: linear-gradient(0deg, rgba(0,212,255,1) 0%, rgba(0,212,255,0.9360119047619048) 36%, rgba(0,212,255,0.7595413165266106) 55%, rgba(0,212,255,0) 100%);
+        }
+    }
 }
 
 .noItem {
