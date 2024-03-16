@@ -36,11 +36,19 @@ export class AuthEffects {
       switchMap(action =>
         this.databaseService.loginUser(action.email, action.password).pipe(
           map(userCredential => AuthActions.logInSuccess({ user: userCredential })),
+          tap(userCredential => localStorage.setItem('user', JSON.stringify(userCredential.user))),
           catchError(error => of(AuthActions.logInFail({errorMessage: error.code}))),
         )
       )
     )
   })
 
+  logout$ = createEffect(() => 
+    this.actions$.pipe(
+      ofType(AuthActions.logOutUser),
+      tap(() => localStorage.setItem('user', null))
+    ),
+    {dispatch: false}
+  )
   constructor(private actions$: Actions, private databaseService: DatabaseService) {}
 }

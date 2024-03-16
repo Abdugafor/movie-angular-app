@@ -1,3 +1,9 @@
+export interface IUser {
+    username: string,
+    email: string,
+    password: string,
+}
+
 export interface IUserSignUp {
     username: string,
     email: string,
@@ -5,8 +11,7 @@ export interface IUserSignUp {
     secondPassword: string
 }
 
-export interface IUser {
-    username: string,
-    email: string,
-    password: string,
+export interface UserLogIn {
+    email: string
+    password: string
 }

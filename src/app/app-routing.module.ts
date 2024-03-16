@@ -16,8 +16,8 @@ const routes: Routes = [
   {path: 'browse/:id', component: MovieInfoComponent},
   {path: 'watchlist', component: WatchlistComponent},
   {path: 'comingsoon', component: ComingsoonComponent},
-  {path: 'login', component: LoginComponent, },
-  {path: 'signup', component: SignupComponent },
+  {path: 'login', component: LoginComponent, canActivate: [authGuard] },
+  {path: 'signup', component: SignupComponent, canActivate: [authGuard]},
   {path: 'search/:id', component: SearchComponent},
   {path: 'profile', component: UserProfileComponent, canActivate: [userProfileGuard]},
 ];

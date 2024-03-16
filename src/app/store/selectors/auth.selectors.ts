@@ -13,3 +13,8 @@ export const selectLogInErrorMessage = createSelector(
     selectAuthFeature,
     (state: State) => state.LogInErrorMessage
 )
+
+export const selectUser = createSelector(
+    selectAuthFeature,
+    (state: State) => state.user
+)

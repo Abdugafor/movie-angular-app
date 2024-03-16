@@ -6,7 +6,7 @@ import { User, UserCredential } from '@angular/fire/auth';
 export const authFeatureKey = 'auth';
 
 export interface State {
-  user: User
+  user: UserCredential
   SignUpErrorMessage: string
   LogInErrorMessage: string
 }
@@ -19,12 +19,12 @@ export const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  // on(AuthActions.logInSuccess, (state, action) => {
-  //   return {
-  //     ...state,
-  //     user: action.user
-  //   }
-  // }),
+  on(AuthActions.logInSuccess, (state, action) => {
+    return {
+      ...state,
+      user: action.user
+    }
+  }),
   on(AuthActions.signUpFail, (state, action) => {
     return {
       ...state, 
@@ -35,6 +35,18 @@ export const reducer = createReducer(
     return {
       ...state, 
       LogInErrorMessage: action.errorMessage
+    }
+  }),
+  on(AuthActions.logOutUser, state => {
+    return {
+      ...state,
+      user: null
+    }
+  }),
+  on(AuthActions.getUserFromLocalstorage, (state, action) => {
+    return {
+      ...state,
+      user: action.user
     }
   })
 );

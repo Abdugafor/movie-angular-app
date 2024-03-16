@@ -42,11 +42,10 @@ export class AppComponent  {
 
     }
 
-    // ngOnInit(): void {
-    //     if (user !== null) {
-    //       this.store.dispatch(AuthActions.logInSuccess({user: this.isLogedIn}))
-    //     }
-    // }
+    ngOnInit(): void {
+      let user = JSON.parse(localStorage.getItem('user'))
+      this.store.dispatch(AuthActions.getUserFromLocalstorage(user))
+    }
 
   fetchData() {
     this.httpService.getMovies('1')

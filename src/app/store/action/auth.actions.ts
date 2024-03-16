@@ -11,6 +11,7 @@ export const AuthActions = createActionGroup({
     'Log in User': props<{email: string, password: string}>(),
     'Log in Fail': props<{errorMessage: string}>(),
     'Log in Success': props<{user: UserCredential}>(),
-    'Log out User': emptyProps()
+    'Log out User': emptyProps(),
+    'Get user from Localstorage': props<{user: UserCredential}>(),
   }
 });

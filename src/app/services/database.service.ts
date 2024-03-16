@@ -24,5 +24,4 @@ export class DatabaseService {
     this.auth.signOut() 
   }
 
-
 }
