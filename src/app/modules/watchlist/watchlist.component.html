@@ -7,7 +7,7 @@
     
         <div class="container">
             <div 
-                class="card watchlist-card" 
+                class="card watchlist-card watched" 
                 *ngFor="let movie of watchedMovies | async" 
                 (click)="onNavigate(movie)"
                 >

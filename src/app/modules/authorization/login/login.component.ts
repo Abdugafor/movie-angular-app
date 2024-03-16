@@ -1,55 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { getAuth, signInWithEmailAndPassword  } from "@angular/fire/auth"
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from 'src/app/store';
+import { AuthActions } from 'src/app/store/action/auth.actions';
+import { selectLogInErrorMessage } from 'src/app/store/selectors/auth.selectors';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  errorMessage: Observable<string>
   isShowPasswordError = false
   isShowInvalidEmail = false
   isShowUserNotFound = false
-  isShowEmptyField = false
+  isShowEmptyField = false 
 
-  auth = getAuth();
+  constructor (
+    private router: Router, 
+    private store: Store<AppState>
+    ) {}
 
-  constructor (private router: Router) {}
+    ngOnInit(): void {
+      this.errorMessage = this.store.pipe(select(selectLogInErrorMessage))
+    }
 
-  onSubmit(email, password) {
+  onSubmit(email: string, password: string) {
 
     if (email === '' || password === '') {
       this.isShowEmptyField = true
     }else {
-      this.isShowEmptyField = false
-
-      signInWithEmailAndPassword(this.auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-
-          this.router.navigate(['/profile'])
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-  
-          if (errorCode === 'auth/wrong-password') {
-            this.isShowPasswordError = true
-          }else if (errorCode === 'auth/invalid-email') {
-            this.isShowInvalidEmail = true
-            this.isShowUserNotFound = false
-          }else if (errorCode === 'auth/user-not-found') {
-            this.isShowUserNotFound =  true
-            this.isShowInvalidEmail = false
-          }
-        });
-
-        
+      this.isShowEmptyField = false        
     }
+
+    this.store.dispatch((AuthActions.logInUser({email: email, password: password})))
+   
   }
 
   onNavigate() {
-    this.router.navigate(['/watchlist'])
-
+    this.router.navigate(['/'])
   }
 }
