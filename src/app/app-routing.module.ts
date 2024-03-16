@@ -10,6 +10,7 @@ import { UserProfileComponent } from './modules/user-profile/user-profile.compon
 import { userProfileGuard } from './modules/user-profile/user-profile.guard';
 import { SearchComponent } from './modules/search/search.component';
 import { authGuard } from './modules/authorization/auth.guard';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   {path: '', component: BrowseComponent},
@@ -20,6 +21,8 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent, canActivate: [authGuard]},
   {path: 'search/:id', component: SearchComponent},
   {path: 'profile', component: UserProfileComponent, canActivate: [userProfileGuard]},
+  {path: 'error', component: ErrorComponent},
+  {path: '**', redirectTo: '/error'},
 ];
 
 @NgModule({
