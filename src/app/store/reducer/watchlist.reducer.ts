@@ -91,18 +91,13 @@ export const reducer = createReducer(
     }
   }),
 
-  //  Get and Set Movies from localstorage
-
-  on(WatchlistActions.getWatchlistFromLocalstorage, (state, _) => {
-    const watchedMovies: Movie[] = JSON.parse(localStorage.getItem(lcWatchedMovies))
-    const likedMovies: Movie[] = JSON.parse(localStorage.getItem(lcFavoriteMovies))
-
-      return {
-        ...state,
-        WatchedMovies: watchedMovies === null ? [] : watchedMovies,
-        LikedMovies: likedMovies === null ? [] : likedMovies
-      }
+  on(WatchlistActions.getFavoriteMovieSuccess, (state , action) => {
+    return {
+      ...state,
+      LikedMovies: action.movies
+    }
   })
+
 );
 
 function isAdded(arr: Movie[], movie: Movie): boolean {
