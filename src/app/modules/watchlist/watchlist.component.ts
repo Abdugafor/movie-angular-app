@@ -25,7 +25,7 @@ export class WatchlistComponent implements OnInit , OnDestroy{
   ngOnInit(): void {
     this.favoriteMovies = this.store.pipe(select(selectLikedMovies))
     this.watchedMovies = this.store.pipe(select(selectWatchedMovies))
-    this.store.dispatch(WatchlistActions.getFavoriteMovieFromDatabase())
+    this.store.dispatch(WatchlistActions.getWatchlistFromDatabase())
   }
 
   ngOnDestroy(): void {
