@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getDatabase, provideDatabase } from '@angular/fire/database';
+
 
 import { environment } from './environments/environment';
 
@@ -41,6 +43,7 @@ import * as fromAuth from './store/reducer/auth.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
 import { RouteEffects } from './store/effects/route.effects';
+import { WatchlistEffects } from './store/effects/watchlist.effects';
 
 
 @NgModule({
@@ -74,11 +77,12 @@ import { RouteEffects } from './store/effects/route.effects';
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    provideDatabase(() => getDatabase()),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreModule.forFeature(fromBrowse.watchlistFeatureKey, fromBrowse.reducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.reducer),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, WatchlistEffects]),
     EffectsModule.forFeature([RouteEffects]),
   ],
   providers: [
