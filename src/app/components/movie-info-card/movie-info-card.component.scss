@@ -79,3 +79,30 @@
     padding: 0 !important;
     font-size: 18px !important;
 }
+
+@media all and (max-width: 900px) {
+    .top-info {
+        height: 100% !important;
+    }
+    .top-info-container {
+        gap: 15px !important;
+        padding: 10px !important;
+    }
+    .poster {
+        width: 13em !important;
+    }
+
+    .info h1 {
+        font-size: 17px;
+    }
+
+    .about {
+        font-size: 11px !important;
+    }
+
+    .genre-tag {
+        font-size: 10px !important;
+    }
+
+ 
+}

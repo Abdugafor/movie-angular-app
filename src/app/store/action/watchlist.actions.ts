@@ -18,9 +18,10 @@ export const WatchlistActions = createActionGroup({
     'Update wathched Movie failed': props<{error: string}>(),
     'Remove watched Movie': props<{movieId: number}>(),
 
-    // 'Get watchlist from Localstorage': props<{watchedMovies: string}>
     'Get watchlist from Database': emptyProps(),
     'Get watchlist success': props<{userData: UserData}>(),
     'Get watchlist failed': props<{error: string}>(),
+
+    'Clear state': emptyProps()
   }
 });

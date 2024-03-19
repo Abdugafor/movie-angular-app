@@ -1,11 +1,12 @@
 <div class="top-info">
-    <ng-content></ng-content>
+    
     
     <img src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt="" class="background">
 
    <div class="top-info-container">
     <div class="poster-block">
         <img src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" class="poster">
+        <ng-content></ng-content>
     </div>
 
     <div class="info-container">

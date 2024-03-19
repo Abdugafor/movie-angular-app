@@ -10,10 +10,10 @@ import { tap, timer } from 'rxjs';
 export class RouteEffects {
   navigateHome$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.logInSuccess, AuthActions.signUpSuccess),
-    tap(() => this.router.navigate(['/watchlist'])),
+    tap(() => this.router.navigate(['/'])),
     tap(() => {setTimeout(() => {
       window.location.reload()  
-    }, 1000);} )
+    }, 500);} )
   ),
   {dispatch: false}
   )

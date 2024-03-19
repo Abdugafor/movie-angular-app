@@ -4,6 +4,7 @@ import { AuthActions } from '../action/auth.actions';
 import { catchError,  map, of, switchMap, tap, timer,  } from 'rxjs';
 import { DatabaseService } from 'src/app/services/database.service';
 import { doc, setDoc , Firestore} from '@angular/fire/firestore';
+import { WatchlistActions } from '../action/watchlist.actions';
 
 
 
@@ -46,7 +47,7 @@ export class AuthEffects {
   logout$ = createEffect(() => 
     this.actions$.pipe(
       ofType(AuthActions.logOutUser),
-      tap(() => localStorage.setItem('user', null))
+      tap(() => localStorage.setItem('user', null)),
     ),
     {dispatch: false}
   )

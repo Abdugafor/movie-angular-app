@@ -68,3 +68,20 @@
 
 
 
+@media all and (max-width: 900px) {
+
+    .info-block {
+        .info {
+            font-size: 45px !important;
+
+        }
+
+        .bottom {
+            margin-top: -15px !important;
+        }
+      }
+
+      .companieImg {
+        width: 100px !important;
+      }
+}
