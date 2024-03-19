@@ -55,6 +55,11 @@ h1 {
 
 @media all and (max-width: 740px) {
     .grid {
-        grid-template-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+    }
+
+    .btnLoad {
+        padding: 11px 21px;
+        border-radius: 12px;
     }
 }

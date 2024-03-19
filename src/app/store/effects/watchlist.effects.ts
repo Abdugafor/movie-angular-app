@@ -44,7 +44,6 @@ export class WatchlistEffects {
       switchMap(action => 
         this.databaseService.readTheData().pipe(
           map(user => WatchlistActions.getWatchlistSuccess({userData: user})),
-          tap(res => console.log(res) ),
           catchError(async error => WatchlistActions.getWatchlistFailed({error: error}))
         )
       )

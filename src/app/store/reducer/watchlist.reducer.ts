@@ -12,12 +12,14 @@ const lcFavoriteMovies = 'favorite movies'
 
 export interface State {
   LikedMovies: Movie[],
-  WatchedMovies: Movie[]
+  WatchedMovies: Movie[],
+  error: string
 }
 
 export const initialState: State = {
   LikedMovies: [],
-  WatchedMovies: []
+  WatchedMovies: [],
+  error: null
 };
 
 
@@ -83,11 +85,17 @@ export const reducer = createReducer(
   }),
 
   on(WatchlistActions.getWatchlistSuccess, (state , action) => {
-    console.log(action.userData.favoriteMovies)
     return {
       ...state,
       LikedMovies: action.userData.favoriteMovies === undefined  ?  [] : action.userData.favoriteMovies,
       WatchedMovies: action.userData.watchedMovies 
+    }
+  }),
+
+  on(WatchlistActions.updateWathchedMovieFailed, WatchlistActions.updateFavoriteMovieFailed, (state, action) => {
+    return {
+      ...state,
+      error: action.error
     }
   })
 

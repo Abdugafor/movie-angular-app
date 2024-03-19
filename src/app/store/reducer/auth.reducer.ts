@@ -19,7 +19,7 @@ export const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  on(AuthActions.logInSuccess, (state, action) => {
+  on(AuthActions.logInSuccess, AuthActions.getUserFromLocalstorage, (state, action) => {
     return {
       ...state,
       user: action.user
@@ -43,11 +43,5 @@ export const reducer = createReducer(
       user: null
     }
   }),
-  on(AuthActions.getUserFromLocalstorage, (state, action) => {
-    return {
-      ...state,
-      user: action.user
-    }
-  })
 );
 

@@ -5,7 +5,7 @@ import { Movie } from 'src/app/models/interfaces/movies.interface';
 import { RouteService } from 'src/app/services/route.service';
 import { AppState } from 'src/app/store';
 import { WatchlistActions } from 'src/app/store/action/watchlist.actions';
-import { selectLikedMovies, selectWatchedMovies } from 'src/app/store/selectors/watchlist.selectors';
+import { selectError, selectLikedMovies, selectWatchedMovies } from 'src/app/store/selectors/watchlist.selectors';
 
 @Component({
   selector: 'app-watchlist',
@@ -16,6 +16,7 @@ import { selectLikedMovies, selectWatchedMovies } from 'src/app/store/selectors/
 export class WatchlistComponent implements OnInit , OnDestroy{
   watchedMovies: Observable<Movie[]>
   favoriteMovies: Observable<Movie[]>
+  error: Observable<string>
 
   constructor(
     private routeService: RouteService,
@@ -25,6 +26,7 @@ export class WatchlistComponent implements OnInit , OnDestroy{
   ngOnInit(): void {
     this.favoriteMovies = this.store.pipe(select(selectLikedMovies))
     this.watchedMovies = this.store.pipe(select(selectWatchedMovies))
+    this.error = this.store.pipe(select(selectError))
     this.store.dispatch(WatchlistActions.getWatchlistFromDatabase())
   }
 

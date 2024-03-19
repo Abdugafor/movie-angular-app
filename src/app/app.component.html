@@ -3,7 +3,6 @@
    <div class="sidebar-top">
     <h1><a [routerLink]="['/']">Lernard<span>Movies</span></a></h1>
 
-
     <div class="feed">
       <span class="info">News Feed</span>
 
@@ -12,13 +11,31 @@
           [routerLink]="['']" 
           routerLinkActive="active" 
           [routerLinkActiveOptions]="{exact: true}"
+          (click)="onToggleSidebar()"
           >
           <i class="fa-regular fa-compass"></i> Browse</a>
         </li>
         
-        <li><a [routerLink]="['watchlist']" routerLinkActive="active" ><i class="fa-regular fa-heart"></i> Watchlist</a></li>
-        <li><a [routerLink]="['comingsoon']" routerLinkActive="active" ><i class="fa-regular fa-calendar-days"></i> Coming soon</a></li>
-        <li><a [routerLink]="['search', 'the']" [queryParams]="{ page: currentPage }" routerLinkActive="active" ><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
+        <li><a 
+          [routerLink]="['watchlist']" 
+          routerLinkActive="active" 
+          (click)="onToggleSidebar()"
+          >
+          <i class="fa-regular fa-heart"></i> Watchlist</a></li>
+
+        <li><a 
+          [routerLink]="['comingsoon']" 
+          routerLinkActive="active" 
+          (click)="onToggleSidebar()"
+          >
+          <i class="fa-regular fa-calendar-days"></i> Coming soon</a></li>
+        <li><a 
+          [routerLink]="['search', 'the']" 
+          [queryParams]="{ page: currentPage }" 
+          routerLinkActive="active" 
+          (click)="onToggleSidebar()"
+          >
+          <i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
       </ul>    
     </div>
    </div>
@@ -27,16 +44,16 @@
     <div class="logout" (click)="onLogout()" *ngIf="isLogedIn">
       <span><i class="fa-solid fa-right-from-bracket" ></i> Logout</span>
     </div>
+
+    <div class="close-icon" *ngIf="isShowSidebar" (click)="onToggleSidebar()">
+       <i class="fa-solid fa-xmark" ></i>
+    </div>
   </div>
 
   <div class="content">
     
-    <app-header></app-header>
+    <app-header [isSidebarOpen]="isShowSidebar" (sidebarToggled)="onToggleSidebar()"></app-header>
 
-    <div class="bar" (click)="onShowSidebar()">
-      <i class="fa-solid fa-bars bar" style="color: #ffffff;" *ngIf="!isShowSidebar"></i>
-      <i class="fa-solid fa-xmark" *ngIf="isShowSidebar"></i>
-    </div>
     <router-outlet></router-outlet>
 
   </div>

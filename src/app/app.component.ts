@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, EventEmitter, Input, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Auth, User, user } from '@angular/fire/auth';
@@ -17,10 +17,12 @@ import { AuthActions } from './store/action/auth.actions';
 
 export class AppComponent  {
   private auth: Auth = inject(Auth);
-  public isShowSidebar = false
+
+  isShowSidebar: boolean = false
+
   user$ = user(this.auth)
   isLogedIn: User | null
-
+ 
   currentPage
   searchTerm = 'Sea'
 
@@ -55,9 +57,6 @@ export class AppComponent  {
       })
   }
 
-  onShowSidebar() {
-    this.isShowSidebar = !this.isShowSidebar
-  }
 
   onLogout() {
    const currentRoute =  this.router.url
@@ -70,5 +69,13 @@ export class AppComponent  {
 
    this.store.dispatch(AuthActions.logOutUser())
    this.databaseService.logOut()
+  }
+
+  onShowSideBar(isTrue) {
+    this.isShowSidebar = isTrue
+  }
+
+  onToggleSidebar() {
+    this.isShowSidebar = !this.isShowSidebar
   }
 }
