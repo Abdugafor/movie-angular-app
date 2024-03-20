@@ -98,6 +98,10 @@ body {
 }
 
 @media all and (max-width: 900px) {
+
+    .icon-btn {
+        position: static !important;
+    }
     
     body {
         font-size: 10px !important;
