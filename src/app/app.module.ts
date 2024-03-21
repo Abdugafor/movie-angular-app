@@ -32,6 +32,8 @@ import { reducers, metaReducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SharedModule } from './modules/shared.module';
 import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './store/effects/auth.effects';
+import { RouteEffects } from './store/effects/route.effects';
 
 
 
@@ -62,7 +64,8 @@ import { EffectsModule } from '@ngrx/effects';
     provideDatabase(() => getDatabase()),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot()
+    EffectsModule.forRoot(),
+    EffectsModule.forFeature([AuthEffects, RouteEffects]),
   ],
   providers: [
     {provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}
