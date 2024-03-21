@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Auth, User, user } from '@angular/fire/auth';

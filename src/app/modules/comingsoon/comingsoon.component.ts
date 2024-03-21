@@ -3,8 +3,6 @@ import { Store } from '@ngrx/store';
 import { Movie } from 'src/app/models/interfaces/movies.interface';
 import { HttpService } from 'src/app/services/http.service';
 import { RouteService } from 'src/app/services/route.service';
-import { AppState } from 'src/app/store';
-import { WatchlistActions } from 'src/app/store/action/watchlist.actions';
 
 @Component({
   selector: 'app-comingsoon',
@@ -17,7 +15,6 @@ export class ComingsoonComponent implements OnInit , OnDestroy{
 
   constructor (
     private httpService: HttpService, 
-    private store: Store<AppState>,
     private routeService: RouteService
   ) {}
 

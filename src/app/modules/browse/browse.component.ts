@@ -23,7 +23,7 @@ export class BrowseComponent implements OnInit , OnDestroy{
   this.httpService.getMovies('1')
     .subscribe({
       next: (res: any) => this.movies = res.results,
-      error: error => console.log('error'),
+      error: error => console.log(error),
       complete: () => {
         this.parties = this.movies.splice(0, 4)
         this.bigMovie = this.movies[this.RandomMovie()]
