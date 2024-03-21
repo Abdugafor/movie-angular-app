@@ -125,12 +125,11 @@ hr {
 
 .sidebarShow {
     display: block !important;
-    background: #161616;
-    width: 100%;
     z-index: 1;
 }
 
 .close-icon {
+    display: none;
     font-size: 20px;
     position: absolute;
     top: 33px;
@@ -138,6 +137,10 @@ hr {
 }
 
 @media all and (max-width: 900px) {
+    .close-icon {
+        display: block;
+    }
+    
     .sidebar {
         display: none;
     }
