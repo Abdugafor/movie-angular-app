@@ -37,7 +37,7 @@ export class HeaderComponent implements OnDestroy{
     if (this.userState !== null) {
       this.router.navigate(['profile'])
     }else {
-      this.router.navigate(['login'])
+      this.router.navigate(['auth'])
     }
   }
 

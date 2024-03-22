@@ -60,3 +60,18 @@
 h1 {
     margin-bottom: 0px !important;
 }
+
+@media all and (max-width: 900px) {
+    h1 {
+        font-size: 10px ;
+    }
+
+    .watchlist-card {
+        width: 105px !important;
+        height: 6em  !important;
+    }
+
+    .container {
+        gap:  0 7px !important;
+    }
+}

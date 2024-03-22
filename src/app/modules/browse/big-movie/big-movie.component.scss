@@ -36,8 +36,7 @@ p {
         @extend %posAbsol;
         height: 100%;
         background: rgb(0,0,0);
-        background: linear-gradient(142deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 27%, rgba(0,0,0,1) 43%, rgba(0,0,0,0.9108018207282913) 58%, rgba(0,0,0,0) 100%);
-        
+        background: linear-gradient(158deg, rgba(0, 0, 0, 0.8519782913) 0%, rgba(0, 0, 0, 0.543855042) 36%, rgba(0, 0, 0, 0.2693452381) 55%, rgba(0, 0, 0, 0) 100%) !important;
     }
 
     .info {

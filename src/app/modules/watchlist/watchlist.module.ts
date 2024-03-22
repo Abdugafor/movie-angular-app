@@ -8,10 +8,12 @@ import { EffectsModule } from "@ngrx/effects";
 import { WatchlistEffects } from "src/app/store/effects/watchlist.effects";
 import { SharedModule } from "../shared.module";
 import { WatchlistRoutingModule } from "./watchlist.routing";
+import { cutLengthPipe } from "src/app/pipes/cutLength.pipe";
 
 @NgModule({
     declarations: [
-        WatchlistComponent
+        WatchlistComponent,
+        cutLengthPipe
     ],
     imports: [
         CommonModule,

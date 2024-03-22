@@ -5,7 +5,8 @@ import { authGuard } from "./auth.guard";
 import { NgModule } from "@angular/core";
 
 const routes: Routes = [
-    {path: '', component: LoginComponent, canActivate: [authGuard]},
+    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: 'login', component: LoginComponent, canActivate: [authGuard]},
     {path: 'signup', component: SignupComponent,  canActivate: [authGuard]},
 ]
 
