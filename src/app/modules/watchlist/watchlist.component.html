@@ -16,7 +16,7 @@
     
                 <div class="bg-filter"></div>
 
-                <h1>{{movie['title']}}</h1>
+                <h1>{{movie['title'] | cutLengthPipe}}</h1>
 
                 <div class="delete icon-btn" (click)="onRemoveWatched(movie.id)">
                     <i class="fa-regular fa-trash-can"></i>

@@ -109,9 +109,27 @@ body {
     .card {
         height: 14em;
         width: 97px;
+        border-radius: 9px !important;
     }
 
     .card h1 {
         font-size: 10px;
+        line-height: 11px;
+    }
+
+    .form {
+        display: block !important; 
+        position: unset !important; 
+        transform: translate(0, 0) !important;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #ffffff;
+        padding: 30px;
+        width: fit-content !important;
+        border-radius: 11px !important;
+    }
+
+    .inputForm {
+        margin-bottom: 10px;
     }
 }

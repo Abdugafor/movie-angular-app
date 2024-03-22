@@ -23,7 +23,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/comingsoon/comingsoon.module').then(m => m.ComingSoonModule)
   },
   {
-    path: 'login',
+    path: 'auth',
     loadChildren: () => import('./modules/authorization/auth.module').then(m => m.AuthModule)
   },
   {
