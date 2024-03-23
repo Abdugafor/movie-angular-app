@@ -1,12 +1,5 @@
 @import "../login/login.component.scss";    
 
-.user {
-    width: 20px;
+.inputError input {
+    border: 1px solid $red-color !important;
 }
-
-.container {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }

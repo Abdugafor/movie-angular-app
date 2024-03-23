@@ -1,36 +1,63 @@
 <div class="container" >
-  <div class="backdrop-filter" (click)="onNavigate()"></div>
-  <form class="form">
-    <h1>Log in</h1>
-    
-        <div class="flex-column">
-          <label>Email </label>
-        </div>
+ <div class="img">
+    <img src="../../../../assets/movieCatalog.jpg" alt="">
+ </div>
+
+  <div class="form-container">
+      <h1>Lernard<span>Movies</span></h1>
+
+      <div class="form-block">
+        <form class="form">
+      <h1>Login</h1>
+      
+          <div class="input">
+            <div class="flex-column">
+              <label>Email </label>
+            </div>
+              
+              <div class="inputForm" [ngClass]="isShowInvalidEmail || isShowUserNotFound || isShowEmptyField ? 'inputError' : ''">
+               <img src="../assets/svg/email.svg" alt="">
+                <input placeholder="Enter your Email" class="input" type="text" #email type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+              </div>
+          </div>
+      
+            <p class="error" *ngIf="isShowInvalidEmail">! Invalid Email</p>
+            <p class="error" *ngIf="isShowUserNotFound">! User not found</p>
           
-          <div class="inputForm" [ngClass]="isShowInvalidEmail || isShowUserNotFound || isShowEmptyField ? 'inputError' : ''">
-           <img src="../assets/svg/email.svg" alt="">
-            <input placeholder="Enter your Email" class="input" type="text" #email>
-          </div>
-    
-          <p class="error" *ngIf="isShowInvalidEmail">! Invalid Email</p>
-          <p class="error" *ngIf="isShowUserNotFound">! User not found</p>
-        
-        <div class="flex-column" >
-          <label>Password </label></div>
+        <div class="input">
+          <div class="flex-column" >
+            <label>Password </label></div>
           <div class="inputForm" [ngClass]="isShowPasswordError || isShowEmptyField ? 'inputError' : ''">
-           <img src="../assets/svg/password.svg" alt="">
-            <input placeholder="Enter your Password" class="input" type="password" #password>
+             <img src="../assets/svg/password.svg" alt="">
+              <input placeholder="Enter your Password" class="input" type="password" #password>
           </div>
-    
+        </div>
+
           <p class="error" *ngIf="isShowPasswordError">! Wrong Password</p>
           <p class="error" *ngIf="isShowEmptyField">! Please fill  empty fields</p>
           <p class="error" >{{errorMessage | async}}</p>
-    
-    
-        <button class="button-submit" type="button" (click)="onSubmit(email.value, password.value)">Sign In</button>
-    
-        <p class="p">Don't have an account? <a class="span" [routerLink]="['/auth/signup']">Sign Up</a></p>
+          <p class="fg-password">Forgot Password?</p>
+          
+          <button class="button-submit" type="button" (click)="onSubmit(email.value, password.value)">Log In</button>
+       </form>
 
-    
-    </form>
+       <div class="decor">
+          <hr>
+          <p>Or Continue With</p>
+          <hr>
+       </div>
+
+       <div class="auth-icons">
+          <img src="../../../../assets/svg/google.svg" alt="google">
+          <img src="../../../../assets/svg/apple.svg" alt="apple">
+       </div>
+
+       <p class="have-account">Already have an account? <a [routerLink]="['/auth/signup']">Sign up</a></p>
+      </div>
+  </div>
 </div>
+
+ 
+
+        <!-- <p class="p">Don't have an account? <a class="span" [routerLink]="['/auth/signup']">Sign Up</a></p> -->
+  

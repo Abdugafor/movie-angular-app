@@ -1,10 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { DataSnapshot, Database, child, get, ref, set } from '@angular/fire/database';
-import { Store, select } from '@ngrx/store';
+import {  Database, child, get, ref, set } from '@angular/fire/database';
 import { Observable, from } from 'rxjs';
-import { AppState } from '../store';
-import { selectUser } from '../store/selectors/auth.selectors';
 import { Movie } from '../models/interfaces/movies.interface';
 import { UserData } from '../models/interfaces/watchlist.interface';
 
@@ -16,11 +13,10 @@ export class DatabaseService {
   public auth: Auth = inject(Auth)
   public db: Database = inject(Database)
   
-  private store: Store<AppState> = inject(Store)
 
   constructor() {}
 
-  public signUpUser(username, email, password) {
+  public signUpUser(email, password) {
     
    return from(createUserWithEmailAndPassword(this.auth, email, password))
   }

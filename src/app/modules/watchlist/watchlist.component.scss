@@ -7,8 +7,7 @@
     }
 
     .delete {
-        position: absolute;
-        z-index: 1;
+        position: absolute !important;
         top: 10px;
         right: 15px;
     }
@@ -67,8 +66,8 @@ h1 {
     }
 
     .watchlist-card {
-        width: 105px !important;
-        height: 6em  !important;
+        width: 149px !important;
+        height: 14em  !important;
     }
 
     .container {

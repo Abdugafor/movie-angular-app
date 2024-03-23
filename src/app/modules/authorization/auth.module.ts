@@ -17,7 +17,6 @@ import { AuthRouingModule } from "./auth.routing";
         RouterModule,
         AuthRouingModule,
         StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.reducer),
-       
     ],
     declarations: [
         LoginComponent,

@@ -34,6 +34,7 @@ import { SharedModule } from './modules/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
 import { RouteEffects } from './store/effects/route.effects';
+import { AuthComponent } from './components/auth/auth.component';
 
 
 
@@ -51,6 +52,7 @@ import { RouteEffects } from './store/effects/route.effects';
     CardComponent,
     SearchComponent,
     ErrorComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
