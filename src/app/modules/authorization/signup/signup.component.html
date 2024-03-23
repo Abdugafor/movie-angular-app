@@ -1,4 +1,79 @@
-<div class="container">
+<div class="container" >
+  <div class="img">
+     <img src="../../../../assets/movieCatalog.jpg" alt="">
+  </div>
+ 
+   <div class="form-container">
+       <h1>Lernard<span>Movies</span></h1>
+ 
+       <div class="form-block">
+         <form class="form">
+       <h1>Sign Up</h1>
+       
+           <div class="input">
+             <div class="flex-column">
+               <label>Email </label>
+             </div>
+               
+               <div class="inputForm" [ngClass]="isShowEmptyFieldError ? 'inputError' : ''">
+                <img src="../assets/svg/email.svg" alt="">
+                 <input placeholder="Enter your Email" class="input" type="text" #email type="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+               </div>
+           </div>
+       
+           
+         <div class="input">
+           <div class="flex-column" >
+             <label>Password </label></div>
+           <div class="inputForm" [ngClass]="isShowPasswordError || isShowEmptyFieldError ? 'inputError' : ''">
+              <img src="../assets/svg/password.svg" alt="">
+               <input placeholder="Enter your Password" class="input" type="password" #password>
+           </div>
+         </div>
+
+         <div class="input">
+          <div class="flex-column" >
+            <label>Password </label></div>
+          <div class="inputForm" [ngClass]="isShowPasswordError || isShowEmptyFieldError ? 'inputError' : ''" >
+             <img src="../assets/svg/password.svg" alt="">
+              <input placeholder="Enter your Password" class="input" type="password" #repeatPassword>
+          </div>
+        </div>
+ 
+          <p class="error" *ngIf="isShowPasswordError && !isShowEmptyFieldError">! Passwords do not match</p>
+          <p class="error" *ngIf="isShowEmptyFieldError && !isShowPasswordError">! Please fill empty fields</p>
+          <p class="error" *ngIf="isShowPasswordError && isShowEmptyFieldError">! Passwords do not match</p>
+           <p class="error" >{{errorMessage | async}}</p>
+           
+           <button class="button-submit" type="button" (click)="onSubmit({
+            email: email.value, 
+            password: password.value,  
+            secondPassword: repeatPassword.value})">Sign Up</button>
+        </form>
+ 
+        <div class="decor">
+           <hr>
+           <p>Or Continue With</p>
+           <hr>
+        </div>
+ 
+        <div class="auth-icons">
+           <img src="../../../../assets/svg/google.svg" alt="google">
+           <img src="../../../../assets/svg/apple.svg" alt="apple">
+        </div>
+ 
+        <p class="have-account">Already have an account? <a [routerLink]="['/auth/login']">Log in</a></p>
+       </div>
+   </div>
+ </div>
+ 
+  
+ 
+         <!-- <p class="p">Don't have an account? <a class="span" [routerLink]="['/auth/signup']">Sign Up</a></p> -->
+   
+ 
+
+<!-- <div class="container">
   <div class="backdrop-filter" (click)="onNavigate()"></div>
 
   <form class="form">
@@ -17,14 +92,14 @@
           <label>Email </label>
         </div>
           
-          <div class="inputForm" [ngClass]="isShowEmptyFieldError ? 'inputError' : ''">
+          <div class="inputForm" >
            <img src="../assets/svg/email.svg" alt="">
-            <input placeholder="Enter your Email" class="input" type="email" #email pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            <input placeholder="Enter your Email" class="input" >
           </div>
         
         <div class="flex-column">
           <label>Password </label></div>
-          <div class="inputForm"  [ngClass]="isShowPasswordError || isShowEmptyFieldError ? 'inputError' : ''">
+          <div class="inputForm"  >
            <img src="../assets/svg/password.svg" alt="">
             <input placeholder="Enter your Password" class="input" type="password" #pasword>
           </div>
@@ -39,18 +114,12 @@
                 #repeatPassword
                >
             </div>
-            <p class="error" *ngIf="isShowPasswordError">! Passwords do not match</p>
-            <p class="error" *ngIf="isShowEmptyFieldError">! Please fill empty fields</p>
-            <p class="error" >{{errorMessage | async}}</p>
+           
         
         <button 
           class="button-submit" 
           type="button" 
-          (click)="onSubmit({
-            username: username.value, 
-            email: email.value, 
-            password: pasword.value,  
-            secondPassword: repeatPassword.value})"
+          (click)="onSubmit()"
         >Sign Up</button>
     
         <p class="p">Have already an accaunt? <a class="span" [routerLink]="['/auth/login']">Log In</a></p>
@@ -70,4 +139,4 @@
       
         </div>
     </form>
-</div>
+</div> -->

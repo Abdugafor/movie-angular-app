@@ -38,7 +38,6 @@ body {
     right: 20px;
     font-size: 20px;
     background: white;
-    z-index: 1;
     padding: 2px 10px;
     border-radius: 10px;
     color: black;
@@ -118,15 +117,7 @@ body {
     }
 
     .form {
-        display: block !important; 
-        position: unset !important; 
-        transform: translate(0, 0) !important;
-        flex-direction: column;
-        gap: 10px;
-        background-color: #ffffff;
-        padding: 30px;
-        width: fit-content !important;
-        border-radius: 11px !important;
+       
     }
 
     .inputForm {

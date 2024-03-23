@@ -15,12 +15,11 @@ export class AuthEffects {
   signUp$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.signUpUser),
     switchMap(action => 
-      this.databaseService.signUpUser(action.user.username, action.user.email, action.user.password).pipe(
+      this.databaseService.signUpUser(action.user.email, action.user.password).pipe(
         map(userCredential => {
           const user = userCredential.user;
         
           setDoc(doc(this.firestore, 'Users', user.uid), {
-              name: action.user.username,
               email: action.user.email,
               photoURL: null
           })
