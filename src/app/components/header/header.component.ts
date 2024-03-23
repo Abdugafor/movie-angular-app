@@ -1,4 +1,4 @@
-import { Component, OnDestroy , inject} from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy , Output, inject} from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth, User, user } from '@angular/fire/auth';
 import { Subscription } from 'rxjs'
@@ -12,6 +12,9 @@ import { RouteService } from 'src/app/services/route.service';
 })
 export class HeaderComponent implements OnDestroy{
   private auth: Auth = inject(Auth);
+  @Input() isSidebarOpen: boolean
+  @Output() sidebarToggled: EventEmitter<boolean> = new EventEmitter<boolean>
+
   userState
   user$ = user(this.auth)
   userSubscription: Subscription
@@ -34,7 +37,7 @@ export class HeaderComponent implements OnDestroy{
     if (this.userState !== null) {
       this.router.navigate(['profile'])
     }else {
-      this.router.navigate(['login'])
+      this.router.navigate(['auth'])
     }
   }
 
@@ -45,5 +48,9 @@ export class HeaderComponent implements OnDestroy{
 
   onSearch(movieName: string) {
    this.router.navigate(['search', movieName])
+  }
+
+  onToggleSideBar() {
+    this.sidebarToggled.emit()
   }
 }

@@ -1,7 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { AuthActions } from '../action/auth.actions';
-import { IUser } from 'src/app/models/interfaces/auth.interface';
-import { User, UserCredential } from '@angular/fire/auth';
+import { UserCredential } from '@angular/fire/auth';
 
 export const authFeatureKey = 'auth';
 
@@ -19,7 +18,7 @@ export const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  on(AuthActions.logInSuccess, (state, action) => {
+  on(AuthActions.logInSuccess, AuthActions.getUserFromLocalstorage, (state, action) => {
     return {
       ...state,
       user: action.user
@@ -43,11 +42,5 @@ export const reducer = createReducer(
       user: null
     }
   }),
-  on(AuthActions.getUserFromLocalstorage, (state, action) => {
-    return {
-      ...state,
-      user: action.user
-    }
-  })
 );
 

@@ -72,11 +72,16 @@ a {
     color: white;
 }
 
-@media all and (max-width: 900px) {
-    .header {
-        width: 100%;
-    }
+.bar {
+    display: none;
+}
 
+@media all and (max-width: 900px) {
+
+    .bar {
+        display: block;
+    }
+    
     input {
         padding: 6px 26px !important;
         width: 147px !important;
@@ -86,7 +91,7 @@ a {
    .search {
         i {
             left: 11px !important;
-            top: 8px !important;
+            top: 10px !important;
         }
    }
 
@@ -95,9 +100,13 @@ a {
     }
 
     .right-side {
+        gap: 20px;
         i {
-            font-size: 14px !important  ;
+            font-size: 16px !important  ;
         }
+
+       
     }
 
 }
+

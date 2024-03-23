@@ -16,6 +16,7 @@ import { selectLikedMovies, selectWatchedMovies } from 'src/app/store/selectors/
 export class WatchlistComponent implements OnInit , OnDestroy{
   watchedMovies: Observable<Movie[]>
   favoriteMovies: Observable<Movie[]>
+  user
 
   constructor(
     private routeService: RouteService,
@@ -25,7 +26,8 @@ export class WatchlistComponent implements OnInit , OnDestroy{
   ngOnInit(): void {
     this.favoriteMovies = this.store.pipe(select(selectLikedMovies))
     this.watchedMovies = this.store.pipe(select(selectWatchedMovies))
-    this.store.dispatch(WatchlistActions.getWatchlistFromLocalstorage())
+    this.user = localStorage.getItem('user')
+    this.store.dispatch(WatchlistActions.getWatchlistFromDatabase())
   }
 
   ngOnDestroy(): void {

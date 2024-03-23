@@ -36,8 +36,7 @@ p {
         @extend %posAbsol;
         height: 100%;
         background: rgb(0,0,0);
-        background: linear-gradient(142deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 27%, rgba(0,0,0,1) 43%, rgba(0,0,0,0.9108018207282913) 58%, rgba(0,0,0,0) 100%);
-        
+        background: linear-gradient(158deg, rgba(0, 0, 0, 0.8519782913) 0%, rgba(0, 0, 0, 0.543855042) 36%, rgba(0, 0, 0, 0.2693452381) 55%, rgba(0, 0, 0, 0) 100%) !important;
     }
 
     .info {
@@ -88,6 +87,25 @@ p {
 }
 
 @media all and (max-width: 900px) {
+
+    .info {
+        justify-content: flex-start !important;
+        gap: 12px;
+
+        // .main-info {
+        //     width: 50%;
+        // }
+
+        img {
+            width: 20px !important;
+        }
+    }
+
+    
+    .bg-filter  {
+        background: linear-gradient(158deg, rgba(0,0,0,0.8519782913165266) 0%, rgba(0,0,0,0.5438550420168067) 36%, rgba(0,0,0,0.26934523809523814) 55%, rgba(0,0,0,0) 100%) !important;
+    }
+
    .big-img-block {
     height: 17em; 
 
@@ -96,8 +114,9 @@ p {
     }
 
     button {
-        padding: 10px 16px;
-        font-size: 9px;
+       padding: 5px 8px;
+        font-size: 8px;
+        border-radius: 1em;
     }
    }
 }

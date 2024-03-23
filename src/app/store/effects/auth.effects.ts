@@ -1,9 +1,10 @@
 import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthActions } from '../action/auth.actions';
-import { catchError,  map, of, switchMap, tap, timer,  } from 'rxjs';
+import { catchError,  map, of, switchMap, tap,  } from 'rxjs';
 import { DatabaseService } from 'src/app/services/database.service';
 import { doc, setDoc , Firestore} from '@angular/fire/firestore';
+import { WatchlistActions } from '../action/watchlist.actions';
 
 
 
@@ -14,12 +15,11 @@ export class AuthEffects {
   signUp$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.signUpUser),
     switchMap(action => 
-      this.databaseService.signUpUser(action.user.username, action.user.email, action.user.password).pipe(
+      this.databaseService.signUpUser(action.user.email, action.user.password).pipe(
         map(userCredential => {
           const user = userCredential.user;
         
           setDoc(doc(this.firestore, 'Users', user.uid), {
-              name: action.user.username,
               email: action.user.email,
               photoURL: null
           })
@@ -46,9 +46,11 @@ export class AuthEffects {
   logout$ = createEffect(() => 
     this.actions$.pipe(
       ofType(AuthActions.logOutUser),
-      tap(() => localStorage.setItem('user', null))
+      tap(() => localStorage.setItem('user', null)),
+      switchMap(() => {
+        return [WatchlistActions.clearState()]; 
+      })
     ),
-    {dispatch: false}
   )
   constructor(private actions$: Actions, private databaseService: DatabaseService) {}
 }

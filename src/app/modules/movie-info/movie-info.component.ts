@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import {  Subscription } from 'rxjs';
+import { DatabaseService } from 'src/app/services/database.service';
 import { HttpService } from 'src/app/services/http.service';
 import { RouteService } from 'src/app/services/route.service';
 import { AppState } from 'src/app/store';
@@ -29,7 +30,8 @@ export class MovieInfoComponent implements OnDestroy, OnInit{
       private activatedRoute: ActivatedRoute, 
       private httpService: HttpService,
       private routeService: RouteService,
-      private store: Store<AppState>
+      private store: Store<AppState>,
+      private dbService: DatabaseService
     ) {
     this.subscribe = activatedRoute.params.subscribe(
       (params: any) => this.id = params['id']

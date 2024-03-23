@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getDatabase, provideDatabase } from '@angular/fire/database';
+
 
 import { environment } from './environments/environment';
 
@@ -13,76 +15,57 @@ import { environment } from './environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowseComponent } from './modules/browse/browse.component';
-import { WatchlistComponent } from './modules/watchlist/watchlist.component';
-import { ComingsoonComponent } from './modules/comingsoon/comingsoon.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PopularComponent } from './modules/browse/popular/popular.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
 import { PartiesComponent } from './modules/browse/parties/parties.component';
 import { BigMovieComponent } from './modules/browse/big-movie/big-movie.component';
-import { DecorationComponent } from './components/decoration/decoration.component';
-import { MovieInfoComponent } from './modules/browse/movie-info/movie-info.component';
-import { CountBudgetPipe } from './pipes/count-budget.pipe';
-import { CountBudgetLength } from './pipes/countBudgetLength.pipe';
+
+
 import { CardComponent } from './components/card/card.component';
-import { MovieInfoCardComponent } from './components/movie-info-card/movie-info-card.component';
-import { LoginComponent } from './modules/authorization/login/login.component';
-import { SignupComponent } from './modules/authorization/signup/signup.component';
-import { UserProfileComponent } from './modules/user-profile/user-profile.component';
+
 import { SearchComponent } from './modules/search/search.component';
-import { RouteReuseStrategy } from '@angular/router';
-import { CustomRouteReuseStrategy } from './utils/routerReuse';
 import { ErrorComponent } from './components/error/error.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import * as fromBrowse from './store/reducer/watchlist.reducer';
-import * as fromAuth from './store/reducer/auth.reducer';
+import { SharedModule } from './modules/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
 import { RouteEffects } from './store/effects/route.effects';
+
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BrowseComponent,
-    WatchlistComponent,
-    ComingsoonComponent,
     HeaderComponent,
     PopularComponent,
-    SpinnerComponent,
     PartiesComponent,
     BigMovieComponent,
-    DecorationComponent,
-    MovieInfoComponent,
-    CountBudgetPipe,
-    CountBudgetLength,
+
     CardComponent,
-    MovieInfoCardComponent,
-    LoginComponent,
-    SignupComponent,
-    UserProfileComponent,
     SearchComponent,
     ErrorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
     HttpClientModule,
     RouterModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    provideDatabase(() => getDatabase()),
     StoreModule.forRoot(reducers, { metaReducers }),
-    StoreModule.forFeature(fromBrowse.watchlistFeatureKey, fromBrowse.reducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.reducer),
-    EffectsModule.forRoot([AuthEffects]),
-    EffectsModule.forFeature([RouteEffects]),
+    EffectsModule.forRoot(),
+    EffectsModule.forFeature([AuthEffects, RouteEffects]),
   ],
   providers: [
-    {provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}
   ],
   bootstrap: [AppComponent]
 })

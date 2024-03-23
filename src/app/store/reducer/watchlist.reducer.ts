@@ -1,23 +1,20 @@
 import { createReducer, on } from '@ngrx/store';
 import { Movie } from 'src/app/models/interfaces/movies.interface';
 import { WatchlistActions } from '../action/watchlist.actions';
-import { state } from '@angular/animations';
 
 export const watchlistFeatureKey = 'watchlist';
-
-// localstorage items name 
-const lcWatchedMovies = 'watched movies'
-const lcFavoriteMovies = 'favorite movies'
 
 
 export interface State {
   LikedMovies: Movie[],
-  WatchedMovies: Movie[]
+  WatchedMovies: Movie[],
+  error: string
 }
 
 export const initialState: State = {
   LikedMovies: [],
-  WatchedMovies: []
+  WatchedMovies: [],
+  error: null
 };
 
 
@@ -30,7 +27,6 @@ export const reducer = createReducer(
     const movies: Movie[] = [action.movie, ...state.LikedMovies, ]
     
     if (!isAdded(state.LikedMovies, action.movie)) {
-      addToLocalStorage(lcFavoriteMovies, movies)
 
       return {
         ...state,
@@ -45,8 +41,6 @@ export const reducer = createReducer(
   on(WatchlistActions.removeFavoriteMovie, (state, action) => {
     const movies: Movie[] = [...state.LikedMovies].filter(movie => movie.id !== action.movieId)
 
-    addToLocalStorage(lcFavoriteMovies, movies)
-
     return {
       ...state,
       LikedMovies: movies
@@ -60,8 +54,6 @@ export const reducer = createReducer(
     if (!isAdded(state.WatchedMovies, action.movie)) {
       const moviesArr: Movie[] =  [action.movie , ...state.WatchedMovies]
 
-      addToLocalStorage(lcWatchedMovies, moviesArr)
-
       return {
         ...state,
         WatchedMovies: moviesArr
@@ -72,8 +64,6 @@ export const reducer = createReducer(
     const updatedMovies = [...state.WatchedMovies];
     updatedMovies.splice(movieIndex, 1);
 
-    addToLocalStorage(lcWatchedMovies, [action.movie , ...updatedMovies])
-
     return {
       ...state,
       WatchedMovies: [action.movie, ...updatedMovies]
@@ -83,25 +73,33 @@ export const reducer = createReducer(
   on(WatchlistActions.removeWatchedMovie, (state, action) => {
     const updatedMovies = [...state.WatchedMovies].filter(movie => movie.id !== action.movieId)
 
-    addToLocalStorage(lcWatchedMovies, updatedMovies)
-
     return {
       ...state,
       WatchedMovies: updatedMovies
     }
   }),
 
-  //  Get and Set Movies from localstorage
+  on(WatchlistActions.getWatchlistSuccess, (state , action) => {
+    return {
+      ...state,
+      LikedMovies: action.userData.favoriteMovies === undefined  ?  [] : action.userData.favoriteMovies,
+      WatchedMovies: action.userData.watchedMovies 
+    }
+  }),
 
-  on(WatchlistActions.getWatchlistFromLocalstorage, (state, _) => {
-    const watchedMovies: Movie[] = JSON.parse(localStorage.getItem(lcWatchedMovies))
-    const likedMovies: Movie[] = JSON.parse(localStorage.getItem(lcFavoriteMovies))
+  on(WatchlistActions.updateWathchedMovieFailed, WatchlistActions.updateFavoriteMovieFailed, (state, action) => {
+    return {
+      ...state,
+      error: action.error
+    }
+  }),
 
-      return {
-        ...state,
-        WatchedMovies: watchedMovies === null ? [] : watchedMovies,
-        LikedMovies: likedMovies === null ? [] : likedMovies
-      }
+  on(WatchlistActions.clearState, (state, _) => {
+    return {
+      ...state,
+      WatchedMovies: [],
+      LikedMovies: []
+    }
   })
 );
 
@@ -114,7 +112,4 @@ function isAdded(arr: Movie[], movie: Movie): boolean {
   return false
 }
 
-function addToLocalStorage(lcStorageItemName: string, list: Movie[]) {
-  localStorage.setItem(lcStorageItemName, JSON.stringify(list))
-}
 

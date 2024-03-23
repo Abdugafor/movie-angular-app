@@ -38,7 +38,6 @@ body {
     right: 20px;
     font-size: 20px;
     background: white;
-    z-index: 1;
     padding: 2px 10px;
     border-radius: 10px;
     color: black;
@@ -98,16 +97,30 @@ body {
 }
 
 @media all and (max-width: 900px) {
+
+    .icon-btn {
+        position: static !important;
+    }
     
     body {
-        font-size: 11px !important;
+        font-size: 10px !important;
     }
     .card {
-        height: 12em;
-        width: 118px;
+        height: 14em;
+        width: 97px;
+        border-radius: 9px !important;
     }
 
     .card h1 {
         font-size: 10px;
+        line-height: 11px;
+    }
+
+    .form {
+       
+    }
+
+    .inputForm {
+        margin-bottom: 10px;
     }
 }

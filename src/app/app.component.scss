@@ -122,22 +122,26 @@ hr {
     border: 0.01em solid rgba(128, 128, 128, 0.507);
 }
 
-.bar {
+
+.sidebarShow {
+    display: flex !important;
+    background: #0F0F0F;
+    z-index: 1;
+}
+
+.close-icon {
     display: none;
     font-size: 20px;
     position: absolute;
-    z-index: 1;
-    right: -25px;
-}
-
-.sidebarShow {
-    display: block !important;
-    background: #161616;
-    width: 100%;
-    z-index: 1;
+    top: 33px;
+    right: 50px;
 }
 
 @media all and (max-width: 900px) {
+    .close-icon {
+        display: block;
+    }
+    
     .sidebar {
         display: none;
     }

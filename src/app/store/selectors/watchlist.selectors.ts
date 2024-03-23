@@ -14,3 +14,8 @@ export const selectWatchedMovies = createSelector(
     selectMovieFeature,
     (state: State) => state.WatchedMovies
 )
+
+export const selectError = createSelector(
+    selectMovieFeature,
+    (state: State) => state.error
+)
