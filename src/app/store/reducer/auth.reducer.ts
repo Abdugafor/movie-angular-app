@@ -1,7 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { AuthActions } from '../action/auth.actions';
-import { IUser } from 'src/app/models/interfaces/auth.interface';
-import { User, UserCredential } from '@angular/fire/auth';
+import { UserCredential } from '@angular/fire/auth';
 
 export const authFeatureKey = 'auth';
 

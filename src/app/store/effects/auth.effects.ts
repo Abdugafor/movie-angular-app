@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthActions } from '../action/auth.actions';
-import { catchError,  map, of, switchMap, tap, timer,  } from 'rxjs';
+import { catchError,  map, of, switchMap, tap,  } from 'rxjs';
 import { DatabaseService } from 'src/app/services/database.service';
 import { doc, setDoc , Firestore} from '@angular/fire/firestore';
 import { WatchlistActions } from '../action/watchlist.actions';

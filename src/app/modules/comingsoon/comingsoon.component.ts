@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Movie } from 'src/app/models/interfaces/movies.interface';
 import { HttpService } from 'src/app/services/http.service';
 import { RouteService } from 'src/app/services/route.service';
