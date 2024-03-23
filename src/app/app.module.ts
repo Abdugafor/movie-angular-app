@@ -24,8 +24,6 @@ import { BigMovieComponent } from './modules/browse/big-movie/big-movie.componen
 import { CardComponent } from './components/card/card.component';
 
 import { SearchComponent } from './modules/search/search.component';
-import { RouteReuseStrategy } from '@angular/router';
-import { CustomRouteReuseStrategy } from './utils/routerReuse';
 import { ErrorComponent } from './components/error/error.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store';
@@ -34,7 +32,6 @@ import { SharedModule } from './modules/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
 import { RouteEffects } from './store/effects/route.effects';
-import { AuthComponent } from './components/auth/auth.component';
 
 
 
@@ -52,7 +49,6 @@ import { AuthComponent } from './components/auth/auth.component';
     CardComponent,
     SearchComponent,
     ErrorComponent,
-    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +66,6 @@ import { AuthComponent } from './components/auth/auth.component';
     EffectsModule.forFeature([AuthEffects, RouteEffects]),
   ],
   providers: [
-    {provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}
   ],
   bootstrap: [AppComponent]
 })

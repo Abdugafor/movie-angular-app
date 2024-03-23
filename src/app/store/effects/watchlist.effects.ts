@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { WatchlistActions } from '../action/watchlist.actions';
-import { catchError, map, switchMap, tap, withLatestFrom } from 'rxjs';
+import { catchError, map, switchMap, withLatestFrom } from 'rxjs';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '..';

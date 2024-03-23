@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UserCredential } from '@angular/fire/auth';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Movie } from 'src/app/models/interfaces/movies.interface';

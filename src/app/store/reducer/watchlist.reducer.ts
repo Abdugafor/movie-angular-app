@@ -1,13 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import { Movie } from 'src/app/models/interfaces/movies.interface';
 import { WatchlistActions } from '../action/watchlist.actions';
-import { state } from '@angular/animations';
 
 export const watchlistFeatureKey = 'watchlist';
-
-// localstorage items name 
-const lcWatchedMovies = 'watched movies'
-const lcFavoriteMovies = 'favorite movies'
 
 
 export interface State {
