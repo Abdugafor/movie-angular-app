@@ -1,5 +1,7 @@
 <div class="watchlist">
-    <h1>{{error | async}}</h1>
+    <div class="alert" *ngIf="user == 'null'">
+        <img src="../../../assets/svg/alert.svg" alt=""><h1>Note: Movies will not be saved! Please, sign up to save movies.</h1>
+    </div>
     <div class="recently-container">
         <div class="block">
             <h1>Recenty watched Movies</h1>

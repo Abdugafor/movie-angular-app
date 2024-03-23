@@ -60,6 +60,19 @@ h1 {
     margin-bottom: 0px !important;
 }
 
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #ffa500b8;
+    padding: 28px;
+    border-radius: 0.7rem;
+
+    img {
+        width: 50px;
+    }
+}
+
 @media all and (max-width: 900px) {
     h1 {
         font-size: 10px ;
