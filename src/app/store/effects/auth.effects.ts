@@ -47,8 +47,10 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.logOutUser),
       tap(() => localStorage.setItem('user', null)),
+      switchMap(() => {
+        return [WatchlistActions.clearState()]; 
+      })
     ),
-    {dispatch: false}
   )
   constructor(private actions$: Actions, private databaseService: DatabaseService) {}
 }

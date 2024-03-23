@@ -97,8 +97,15 @@ export const reducer = createReducer(
       ...state,
       error: action.error
     }
-  })
+  }),
 
+  on(WatchlistActions.clearState, (state, _) => {
+    return {
+      ...state,
+      WatchedMovies: [],
+      LikedMovies: []
+    }
+  })
 );
 
 function isAdded(arr: Movie[], movie: Movie): boolean {
@@ -110,7 +117,4 @@ function isAdded(arr: Movie[], movie: Movie): boolean {
   return false
 }
 
-function addToLocalStorage(lcStorageItemName: string, list: Movie[]) {
-  localStorage.setItem(lcStorageItemName, JSON.stringify(list))
-}
 
